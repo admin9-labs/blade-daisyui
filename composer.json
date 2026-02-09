@@ -1,0 +1,44 @@
+{
+    "name": "admin9/blade-daisyui",
+    "description": "Blade components for DaisyUI 5 — pure UI, no business logic",
+    "keywords": ["laravel", "blade", "daisyui", "tailwind", "components"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Admin9 Labs",
+            "email": "dev@admin9.dev"
+        }
+    ],
+    "homepage": "https://github.com/admin9-labs/blade-daisyui",
+    "support": {
+        "issues": "https://github.com/admin9-labs/blade-daisyui/issues",
+        "source": "https://github.com/admin9-labs/blade-daisyui"
+    },
+    "require": {
+        "php": "^8.2",
+        "illuminate/contracts": "^11.0|^12.0",
+        "illuminate/support": "^11.0|^12.0",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Admin9\\BladeDaisyui\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Admin9\\BladeDaisyui\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Admin9\\BladeDaisyui\\BladeDaisyuiServiceProvider"
+            ]
+        }
+    }
+}

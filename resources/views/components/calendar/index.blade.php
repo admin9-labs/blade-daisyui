@@ -1,0 +1,5 @@
+@props([
+    'library' => 'cally',
+])
+
+{{ $slot }}

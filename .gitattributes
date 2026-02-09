@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+# Directories excluded from dist archive
+/tests export-ignore
+/docs export-ignore
+/_components export-ignore
+/.github export-ignore
+
+# Files excluded from dist archive
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/phpunit.xml export-ignore
+/CLAUDE.md export-ignore
