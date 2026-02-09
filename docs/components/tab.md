@@ -22,6 +22,18 @@ DaisyUI [Tabs](https://daisyui.com/components/tab/) 的 Blade 封装。
 
 ## 子组件
 
+### `<x-dui::tab.item>`
+
+单个 Tab 项，自动添加 `tab` class。
+
+| Prop | Type | Default | Values |
+|------|------|---------|--------|
+| active | bool | false | — |
+| disabled | bool | false | — |
+| tag | string | 'a' | a, button, input |
+
+> `tag="input"` 时渲染为 `<input type="radio" role="tab" />`，其余渲染为对应标签。
+
 ### `<x-dui::tab.content>`
 
 Tab 内容面板，紧跟在 tab 按钮/radio 后面。
@@ -32,7 +44,17 @@ Tab 内容面板，紧跟在 tab 按钮/radio 后面。
 
 ## 示例
 
-### 基础 Tabs
+### 基础 Tabs（使用 tab.item）
+
+```blade
+<x-dui::tab>
+    <x-dui::tab.item>Tab 1</x-dui::tab.item>
+    <x-dui::tab.item :active="true">Tab 2</x-dui::tab.item>
+    <x-dui::tab.item>Tab 3</x-dui::tab.item>
+</x-dui::tab>
+```
+
+### 基础 Tabs（旧用法）
 
 ```blade
 <x-dui::tab>

@@ -21,6 +21,14 @@ DaisyUI [Dock](https://daisyui.com/components/dock/) 的 Blade 封装。
 
 ## 子组件
 
+### `<x-dui::dock.item>`
+
+单个 Dock 项，渲染为 `<button>`，自动处理 `dock-active` class。
+
+| Prop | Type | Default | Values |
+|------|------|---------|--------|
+| active | bool | false | — |
+
 ### `<x-dui::dock.label>`
 
 Dock 项目的文本标签。
@@ -31,7 +39,26 @@ Dock 项目的文本标签。
 
 ## 示例
 
-### 基础 Dock
+### 基础 Dock（使用 dock.item）
+
+```blade
+<x-dui::dock>
+    <x-dui::dock.item>
+        <svg class="size-[1.2em]">...</svg>
+        <x-dui::dock.label>Home</x-dui::dock.label>
+    </x-dui::dock.item>
+    <x-dui::dock.item :active="true">
+        <svg class="size-[1.2em]">...</svg>
+        <x-dui::dock.label>Inbox</x-dui::dock.label>
+    </x-dui::dock.item>
+    <x-dui::dock.item>
+        <svg class="size-[1.2em]">...</svg>
+        <x-dui::dock.label>Settings</x-dui::dock.label>
+    </x-dui::dock.item>
+</x-dui::dock>
+```
+
+### 基础 Dock（旧用法）
 
 ```blade
 <x-dui::dock>

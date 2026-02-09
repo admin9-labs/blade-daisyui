@@ -61,6 +61,22 @@ class ActionsTest extends TestCase
             ->assertSee('checked="checked"', false);
     }
 
+    public function test_accordion_item_title_prop_renders_collapse_title_and_content(): void
+    {
+        $this->blade('<x-dui::accordion.item title="Question?">Answer</x-dui::accordion.item>')
+            ->assertSee('class="collapse-title"', false)
+            ->assertSee('class="collapse-content"', false)
+            ->assertSeeText('Question?')
+            ->assertSeeText('Answer');
+    }
+
+    public function test_accordion_item_without_title_renders_raw_slot(): void
+    {
+        $this->blade('<x-dui::accordion.item><div class="collapse-title">Custom</div></x-dui::accordion.item>')
+            ->assertSee('class="collapse-title"', false)
+            ->assertDontSee('class="collapse-content"', false);
+    }
+
     // ─── Alert ────────────────────────────────────────────────
 
     public function test_alert_renders_with_alert_class_and_role(): void

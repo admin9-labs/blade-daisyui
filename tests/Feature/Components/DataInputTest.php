@@ -100,6 +100,23 @@ class DataInputTest extends TestCase
             ->assertSee('<input', false);
     }
 
+    // ─── Filter Item ───────────────────────────────────────
+
+    public function test_filter_item_renders_with_btn_class_and_radio_type(): void
+    {
+        $this->blade('<x-dui::filter.item />')
+            ->assertSee('<input', false)
+            ->assertSee('class="btn"', false)
+            ->assertSee('type="radio"', false);
+    }
+
+    public function test_filter_item_passes_through_attributes(): void
+    {
+        $this->blade('<x-dui::filter.item name="frameworks" aria-label="Vue" />')
+            ->assertSee('name="frameworks"', false)
+            ->assertSee('aria-label="Vue"', false);
+    }
+
     // ─── Input ──────────────────────────────────────────────
 
     public function test_input_renders_with_default_type_and_class(): void
@@ -209,6 +226,36 @@ class DataInputTest extends TestCase
     {
         $this->blade('<x-dui::rating :hidden="true">Stars</x-dui::rating>')
             ->assertSee('<input type="radio" class="rating-hidden" aria-label="clear"', false);
+    }
+
+    // ─── Rating Star ────────────────────────────────────────
+
+    public function test_rating_star_renders_with_mask_class(): void
+    {
+        $this->blade('<x-dui::rating.star name="r1" />')
+            ->assertSee('<input', false)
+            ->assertSee('type="radio"', false)
+            ->assertSee('mask mask-star-2', false);
+    }
+
+    public function test_rating_star_custom_shape(): void
+    {
+        $this->blade('<x-dui::rating.star shape="heart" name="r2" />')
+            ->assertSee('mask mask-heart', false);
+    }
+
+    public function test_rating_star_half_adds_half_class(): void
+    {
+        $this->blade('<x-dui::rating.star half="1" name="r3" />')
+            ->assertSee('mask-half-1', false);
+    }
+
+    public function test_rating_star_passes_through_attributes(): void
+    {
+        $this->blade('<x-dui::rating.star name="r4" aria-label="3 stars" checked="checked" />')
+            ->assertSee('name="r4"', false)
+            ->assertSee('aria-label="3 stars"', false)
+            ->assertSee('checked="checked"', false);
     }
 
     // ─── Select ─────────────────────────────────────────────

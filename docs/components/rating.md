@@ -25,9 +25,32 @@ DaisyUI [Rating](https://daisyui.com/components/rating/) 的 Blade 封装。
 > `hidden` 为 true 时会在开头插入一个隐藏的 radio，允许用户清除评分。
 > `half` 为 true 时启用半星评分模式。
 
+## 子组件
+
+### `<x-dui::rating.star>`
+
+单个星星 radio，自动添加 `mask` class。
+
+| Prop | Type | Default | Values |
+|------|------|---------|--------|
+| shape | string | 'star-2' | star, star-2, heart 等 mask 形状 |
+| half | string\|null | null | 1, 2（对应 mask-half-1, mask-half-2） |
+
 ## 示例
 
-### 基本用法
+### 使用 rating.star（推荐）
+
+```blade
+<x-dui::rating>
+  <x-dui::rating.star shape="star" name="rating-1" aria-label="1 star" />
+  <x-dui::rating.star shape="star" name="rating-1" aria-label="2 star" checked="checked" />
+  <x-dui::rating.star shape="star" name="rating-1" aria-label="3 star" />
+  <x-dui::rating.star shape="star" name="rating-1" aria-label="4 star" />
+  <x-dui::rating.star shape="star" name="rating-1" aria-label="5 star" />
+</x-dui::rating>
+```
+
+### 基本用法（旧用法）
 ```blade
 <x-dui::rating>
   <input type="radio" name="rating-1" class="mask mask-star" aria-label="1 star" />

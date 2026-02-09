@@ -53,6 +53,27 @@ class NavigationTest extends TestCase
             ->assertSeeText('Home');
     }
 
+    // ─── Dock Item ──────────────────────────────────────────
+
+    public function test_dock_item_renders_button(): void
+    {
+        $this->blade('<x-dui::dock.item>Home</x-dui::dock.item>')
+            ->assertSee('<button', false)
+            ->assertSeeText('Home');
+    }
+
+    public function test_dock_item_active_adds_dock_active_class(): void
+    {
+        $this->blade('<x-dui::dock.item :active="true">Home</x-dui::dock.item>')
+            ->assertSee('dock-active', false);
+    }
+
+    public function test_dock_item_inactive_has_no_dock_active_class(): void
+    {
+        $this->blade('<x-dui::dock.item>Home</x-dui::dock.item>')
+            ->assertDontSee('dock-active', false);
+    }
+
     // ─── Menu ───────────────────────────────────────────────
 
     public function test_menu_renders_with_default_class(): void
@@ -152,6 +173,50 @@ class NavigationTest extends TestCase
             ->assertSee('join-item', false);
     }
 
+    // ─── Pagination Item ─────────────────────────────────────
+
+    public function test_pagination_item_renders_with_join_item_btn_class(): void
+    {
+        $this->blade('<x-dui::pagination.item>1</x-dui::pagination.item>')
+            ->assertSee('join-item btn', false)
+            ->assertSee('<button', false)
+            ->assertSeeText('1');
+    }
+
+    public function test_pagination_item_active_adds_btn_active_class(): void
+    {
+        $this->blade('<x-dui::pagination.item :active="true">2</x-dui::pagination.item>')
+            ->assertSee('btn-active', false);
+    }
+
+    public function test_pagination_item_disabled_adds_btn_disabled_class(): void
+    {
+        $this->blade('<x-dui::pagination.item :disabled="true">...</x-dui::pagination.item>')
+            ->assertSee('btn-disabled', false);
+    }
+
+    public function test_pagination_item_tag_a_renders_anchor(): void
+    {
+        $this->blade('<x-dui::pagination.item tag="a" href="#">3</x-dui::pagination.item>')
+            ->assertSee('<a', false)
+            ->assertSee('join-item btn', false);
+    }
+
+    public function test_pagination_item_tag_input_renders_input(): void
+    {
+        $this->blade('<x-dui::pagination.item tag="input" aria-label="1" />')
+            ->assertSee('<input', false)
+            ->assertSee('type="radio"', false)
+            ->assertSee('join-item btn', false);
+    }
+
+    public function test_pagination_item_invalid_tag_falls_back_to_button(): void
+    {
+        $this->blade('<x-dui::pagination.item tag="script">X</x-dui::pagination.item>')
+            ->assertSee('<button', false)
+            ->assertDontSee('<script', false);
+    }
+
     // ─── Steps ──────────────────────────────────────────────
 
     public function test_steps_renders_with_default_class(): void
@@ -197,6 +262,51 @@ class NavigationTest extends TestCase
         $this->blade('<x-dui::tab variant="bordered" size="lg">Tabs</x-dui::tab>')
             ->assertSee('tabs-bordered', false)
             ->assertSee('tabs-lg', false);
+    }
+
+    // ─── Tab Item ─────────────────────────────────────────
+
+    public function test_tab_item_renders_with_tab_class(): void
+    {
+        $this->blade('<x-dui::tab.item>Tab 1</x-dui::tab.item>')
+            ->assertSee('class="tab"', false)
+            ->assertSee('role="tab"', false)
+            ->assertSee('<a', false)
+            ->assertSeeText('Tab 1');
+    }
+
+    public function test_tab_item_active_adds_tab_active_class(): void
+    {
+        $this->blade('<x-dui::tab.item :active="true">Tab</x-dui::tab.item>')
+            ->assertSee('tab-active', false);
+    }
+
+    public function test_tab_item_disabled_adds_tab_disabled_class(): void
+    {
+        $this->blade('<x-dui::tab.item :disabled="true">Tab</x-dui::tab.item>')
+            ->assertSee('tab-disabled', false);
+    }
+
+    public function test_tab_item_tag_button_renders_button(): void
+    {
+        $this->blade('<x-dui::tab.item tag="button">Tab</x-dui::tab.item>')
+            ->assertSee('<button', false)
+            ->assertSee('class="tab"', false);
+    }
+
+    public function test_tab_item_tag_input_renders_input(): void
+    {
+        $this->blade('<x-dui::tab.item tag="input" aria-label="Tab 1" />')
+            ->assertSee('<input', false)
+            ->assertSee('type="radio"', false)
+            ->assertSee('role="tab"', false);
+    }
+
+    public function test_tab_item_invalid_tag_falls_back_to_a(): void
+    {
+        $this->blade('<x-dui::tab.item tag="script">Tab</x-dui::tab.item>')
+            ->assertSee('<a', false)
+            ->assertDontSee('<script', false);
     }
 
     // ─── Tab Content ────────────────────────────────────────

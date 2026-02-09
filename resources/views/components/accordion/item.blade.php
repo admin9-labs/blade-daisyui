@@ -3,6 +3,7 @@
     'name' => 'accordion',
     'checked' => false,
     'radio' => false,
+    'title' => null,
 ])
 
 @php
@@ -16,5 +17,10 @@ if ($icon) $classes .= " collapse-{$icon}";
     @else
         <input type="checkbox" @if($checked) checked="checked" @endif />
     @endif
-    {{ $slot }}
+    @if ($title)
+        <div class="collapse-title">{{ $title }}</div>
+        <div class="collapse-content">{{ $slot }}</div>
+    @else
+        {{ $slot }}
+    @endif
 </div>
