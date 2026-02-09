@@ -8,7 +8,7 @@ DaisyUI [Drawer](https://daisyui.com/components/drawer/) 的 Blade 封装。
 <x-dui::drawer id="my-drawer">
   <x-dui::drawer.toggle id="my-drawer" />
   <x-dui::drawer.content>
-    <label for="my-drawer" class="btn drawer-button">Open drawer</label>
+    <x-dui::drawer.button for="my-drawer">Open drawer</x-dui::drawer.button>
   </x-dui::drawer.content>
   <x-dui::drawer.side>
     <x-dui::drawer.overlay for="my-drawer" />
@@ -38,6 +38,14 @@ DaisyUI [Drawer](https://daisyui.com/components/drawer/) 的 Blade 封装。
 |------|------|---------|--------|
 | — | — | — | 无自定义 props，通过 attributes 传递 id 等 |
 
+### `<x-dui::drawer.button>`
+
+打开 Drawer 的按钮，自动添加 `btn drawer-button` class。
+
+| Prop | Type | Default | Values |
+|------|------|---------|--------|
+| — | — | — | 无自定义 props，通过 attributes 传递 for 等 |
+
 ### `<x-dui::drawer.content>`
 
 页面主内容区域。
@@ -65,6 +73,24 @@ DaisyUI [Drawer](https://daisyui.com/components/drawer/) 的 Blade 封装。
 ## 示例
 
 ### 基本 Drawer
+
+```blade
+<x-dui::drawer>
+  <x-dui::drawer.toggle id="my-drawer" />
+  <x-dui::drawer.content>
+    <x-dui::drawer.button for="my-drawer">Open drawer</x-dui::drawer.button>
+  </x-dui::drawer.content>
+  <x-dui::drawer.side>
+    <x-dui::drawer.overlay for="my-drawer" />
+    <ul class="menu p-4 w-80 min-h-full bg-base-200">
+      <li><a>Sidebar Item 1</a></li>
+      <li><a>Sidebar Item 2</a></li>
+    </ul>
+  </x-dui::drawer.side>
+</x-dui::drawer>
+```
+
+### 基本 Drawer（旧用法）
 
 ```blade
 <x-dui::drawer>
@@ -105,7 +131,7 @@ DaisyUI [Drawer](https://daisyui.com/components/drawer/) 的 Blade 封装。
 <x-dui::drawer class="lg:drawer-open">
   <x-dui::drawer.toggle id="my-drawer-responsive" />
   <x-dui::drawer.content>
-    <label for="my-drawer-responsive" class="btn drawer-button lg:hidden">Open</label>
+    <x-dui::drawer.button for="my-drawer-responsive" class="lg:hidden">Open</x-dui::drawer.button>
   </x-dui::drawer.content>
   <x-dui::drawer.side>
     <x-dui::drawer.overlay for="my-drawer-responsive" />

@@ -4,6 +4,16 @@ DaisyUI [Join](https://daisyui.com/components/join/) 的 Blade 封装。
 
 ## 用法
 
+### 推荐用法
+
+```blade
+<x-dui::join>
+  <x-dui::join.item><button class="btn">Button</button></x-dui::join.item>
+  <x-dui::join.item><button class="btn">Button</button></x-dui::join.item>
+  <x-dui::join.item><button class="btn">Button</button></x-dui::join.item>
+</x-dui::join>
+```
+
 ```blade
 <x-dui::join>
   <button class="btn join-item">Button</button>
@@ -32,7 +42,7 @@ Join 组内的子项容器。
 
 ## 示例
 
-### 水平分组按钮
+### 水平分组按钮（旧用法）
 
 ```blade
 <x-dui::join>

@@ -4,6 +4,17 @@ DaisyUI [Indicator](https://daisyui.com/components/indicator/) 的 Blade 封装�
 
 ## 用法
 
+### 推荐用法
+
+```blade
+<x-dui::indicator>
+  <x-dui::indicator.item><x-dui::badge color="primary">New</x-dui::badge></x-dui::indicator.item>
+  <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+</x-dui::indicator>
+```
+
+> 推荐使用 `<x-dui::badge>` 组件替代手写 `class="badge badge-primary"`。
+
 ```blade
 <x-dui::indicator>
   <x-dui::indicator.item class="badge badge-primary">New</x-dui::indicator.item>

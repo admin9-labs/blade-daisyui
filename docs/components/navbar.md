@@ -62,6 +62,8 @@ DaisyUI [Navbar](https://daisyui.com/components/navbar/) 的 Blade 封装。
 
 ### 带下拉菜单、居中 Logo 和图标
 
+> 提示：下拉菜单部分可使用 `<x-dui::dropdown>` 和 `<x-dui::menu>` 组件替代手写 class。
+
 ```blade
 <x-dui::navbar class="bg-base-100 shadow-sm">
     <x-dui::navbar.start>

@@ -21,6 +21,15 @@ DaisyUI [Menu](https://daisyui.com/components/menu/) 的 Blade 封装。
 
 ## 子组件
 
+### `<x-dui::menu.item>`
+
+菜单项，自动渲染 `<li><a>` 结构，处理 `menu-active` 和 `menu-disabled` class。
+
+| Prop | Type | Default | Values |
+|------|------|---------|--------|
+| active | bool | false | — |
+| disabled | bool | false | — |
+
 ### `<x-dui::menu.title>`
 
 菜单标题项。
@@ -47,7 +56,17 @@ DaisyUI [Menu](https://daisyui.com/components/menu/) 的 Blade 封装。
 
 ## 示例
 
-### 基础菜单
+### 使用 menu.item（推荐）
+
+```blade
+<x-dui::menu class="bg-base-200 w-56 rounded-box">
+    <x-dui::menu.item>Item 1</x-dui::menu.item>
+    <x-dui::menu.item :active="true">Item 2</x-dui::menu.item>
+    <x-dui::menu.item>Item 3</x-dui::menu.item>
+</x-dui::menu>
+```
+
+### 基础菜单（旧用法）
 
 ```blade
 <x-dui::menu class="bg-base-200 w-56 rounded-box">
@@ -92,7 +111,7 @@ DaisyUI [Menu](https://daisyui.com/components/menu/) 的 Blade 封装。
 </x-dui::menu>
 ```
 
-### 带活动项
+### 带活动项（旧用法）
 
 ```blade
 <x-dui::menu class="bg-base-200 w-56 rounded-box">

@@ -90,6 +90,28 @@ class NavigationTest extends TestCase
             ->assertSee('menu-horizontal', false);
     }
 
+    // ─── Menu Item ────────────────────────────────────────────
+
+    public function test_menu_item_renders_with_li_and_a(): void
+    {
+        $this->blade('<x-dui::menu.item>Home</x-dui::menu.item>')
+            ->assertSee('<li>', false)
+            ->assertSee('<a', false)
+            ->assertSeeText('Home');
+    }
+
+    public function test_menu_item_active_adds_menu_active_class(): void
+    {
+        $this->blade('<x-dui::menu.item :active="true">Active</x-dui::menu.item>')
+            ->assertSee('menu-active', false);
+    }
+
+    public function test_menu_item_disabled_adds_menu_disabled_class(): void
+    {
+        $this->blade('<x-dui::menu.item :disabled="true">Disabled</x-dui::menu.item>')
+            ->assertSee('menu-disabled', false);
+    }
+
     // ─── Menu Title ─────────────────────────────────────────
 
     public function test_menu_title_renders_with_menu_title_class(): void

@@ -16,6 +16,8 @@ DaisyUI [Collapse](https://daisyui.com/components/collapse/) 的 Blade 封装。
 | Prop | Type | Default | Values |
 |------|------|---------|--------|
 | icon | string\|null | null | arrow, plus |
+| open | bool | false | — |
+| close | bool | false | — |
 
 ## 子组件
 
@@ -67,13 +69,22 @@ DaisyUI [Collapse](https://daisyui.com/components/collapse/) 的 Blade 封装。
 ### 强制展开/关闭
 
 ```blade
-<x-dui::collapse class="collapse-open bg-base-100 border border-base-300">
+<x-dui::collapse :open="true" class="bg-base-100 border border-base-300">
     <x-dui::collapse.title class="font-semibold">始终展开</x-dui::collapse.title>
     <x-dui::collapse.content class="text-sm">内容区域。</x-dui::collapse.content>
 </x-dui::collapse>
 
-<x-dui::collapse class="collapse-close bg-base-100 border border-base-300">
+<x-dui::collapse :close="true" class="bg-base-100 border border-base-300">
     <x-dui::collapse.title class="font-semibold">始终关闭</x-dui::collapse.title>
+    <x-dui::collapse.content class="text-sm">内容区域。</x-dui::collapse.content>
+</x-dui::collapse>
+```
+
+也可以通过 class 直接控制：
+
+```blade
+<x-dui::collapse class="collapse-open bg-base-100 border border-base-300">
+    <x-dui::collapse.title class="font-semibold">始终展开</x-dui::collapse.title>
     <x-dui::collapse.content class="text-sm">内容区域。</x-dui::collapse.content>
 </x-dui::collapse>
 ```

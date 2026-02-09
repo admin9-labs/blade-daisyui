@@ -21,6 +21,8 @@ DaisyUI [Theme Controller](https://daisyui.com/components/theme-controller/) 的
 | name | string | radio 分组名称 |
 | aria-label | string | radio button 模式下的显示文本 |
 
+> **关于外观 class**: Theme Controller 需要与其他 DaisyUI 组件的外观 class 组合使用（如 `toggle`、`radio`、`btn`、`join-item`），这是有意的跨组件组合模式，不属于封装泄漏。
+
 ## 示例
 
 ### Toggle 切换主题

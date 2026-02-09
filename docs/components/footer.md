@@ -4,6 +4,20 @@ DaisyUI [Footer](https://daisyui.com/components/footer/) 的 Blade 封装。
 
 ## 用法
 
+### 推荐用法
+
+```blade
+<x-dui::footer>
+  <nav>
+    <x-dui::footer.title>Services</x-dui::footer.title>
+    <x-dui::link :hover="true">Branding</x-dui::link>
+    <x-dui::link :hover="true">Design</x-dui::link>
+  </nav>
+</x-dui::footer>
+```
+
+> 推荐使用 `<x-dui::link :hover="true">` 替代手写 `<a class="link link-hover">`。
+
 ```blade
 <x-dui::footer>
   <nav>
@@ -33,7 +47,7 @@ Footer 列标题。
 
 ## 示例
 
-### 基本 Footer
+### 基本 Footer（旧用法）
 
 ```blade
 <x-dui::footer class="p-10 bg-neutral text-neutral-content" direction="horizontal">

@@ -141,6 +141,12 @@ class DataInputTest extends TestCase
             ->assertSee('type="email"', false);
     }
 
+    public function test_input_with_validator_prop_adds_validator_class(): void
+    {
+        $this->blade('<x-dui::input :validator="true" />')
+            ->assertSee('validator', false);
+    }
+
     // ─── Label ──────────────────────────────────────────────
 
     public function test_label_renders_span_with_class(): void
@@ -274,6 +280,12 @@ class DataInputTest extends TestCase
             ->assertSee('select-ghost', false);
     }
 
+    public function test_select_with_validator_prop_adds_validator_class(): void
+    {
+        $this->blade('<x-dui::select :validator="true"><option>A</option></x-dui::select>')
+            ->assertSee('validator', false);
+    }
+
     // ─── Textarea ───────────────────────────────────────────
 
     public function test_textarea_renders_with_class(): void
@@ -288,6 +300,12 @@ class DataInputTest extends TestCase
         $this->blade('<x-dui::textarea color="error" :ghost="true">Text</x-dui::textarea>')
             ->assertSee('textarea-error', false)
             ->assertSee('textarea-ghost', false);
+    }
+
+    public function test_textarea_with_validator_prop_adds_validator_class(): void
+    {
+        $this->blade('<x-dui::textarea :validator="true">Text</x-dui::textarea>')
+            ->assertSee('validator', false);
     }
 
     // ─── Toggle ─────────────────────────────────────────────

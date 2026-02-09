@@ -36,6 +36,18 @@ class LayoutTest extends TestCase
             ->assertSee('collapse-arrow', false);
     }
 
+    public function test_collapse_open_prop_adds_collapse_open_class(): void
+    {
+        $this->blade('<x-dui::collapse :open="true">Body</x-dui::collapse>')
+            ->assertSee('collapse-open', false);
+    }
+
+    public function test_collapse_close_prop_adds_collapse_close_class(): void
+    {
+        $this->blade('<x-dui::collapse :close="true">Body</x-dui::collapse>')
+            ->assertSee('collapse-close', false);
+    }
+
     // ─── Collapse Title ────────────────────────────────────
 
     public function test_collapse_title_renders_with_class(): void
@@ -162,6 +174,22 @@ class LayoutTest extends TestCase
         $this->blade('<x-dui::drawer.overlay />')
             ->assertSee('<label', false)
             ->assertSee('aria-label="close sidebar"', false);
+    }
+
+    // ─── Drawer Button ────────────────────────────────────
+
+    public function test_drawer_button_renders_with_btn_and_drawer_button_class(): void
+    {
+        $this->blade('<x-dui::drawer.button>Open</x-dui::drawer.button>')
+            ->assertSee('<label', false)
+            ->assertSee('btn drawer-button', false)
+            ->assertSeeText('Open');
+    }
+
+    public function test_drawer_button_passes_through_for_attribute(): void
+    {
+        $this->blade('<x-dui::drawer.button for="my-drawer">Open</x-dui::drawer.button>')
+            ->assertSee('for="my-drawer"', false);
     }
 
     // ─── Footer ────────────────────────────────────────────
