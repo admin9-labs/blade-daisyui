@@ -7,7 +7,13 @@
 @php
 $classes = 'rating';
 if ($half) $classes .= ' rating-half';
-if ($size) $classes .= " rating-{$size}";
+if ($size) $classes .= ' ' . match($size) {
+    'xs' => 'rating-xs',
+    'sm' => 'rating-sm',
+    'md' => 'rating-md',
+    'lg' => 'rating-lg',
+    default => '',
+};
 @endphp
 
 <div {{ $attributes->merge(['class' => $classes]) }}>

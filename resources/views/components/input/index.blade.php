@@ -8,8 +8,23 @@
 
 @php
 $classes = 'input';
-if ($color) $classes .= " input-{$color}";
-if ($size) $classes .= " input-{$size}";
+if ($color) $classes .= ' ' . match($color) {
+    'primary' => 'input-primary',
+    'secondary' => 'input-secondary',
+    'accent' => 'input-accent',
+    'info' => 'input-info',
+    'success' => 'input-success',
+    'warning' => 'input-warning',
+    'error' => 'input-error',
+    default => '',
+};
+if ($size) $classes .= ' ' . match($size) {
+    'xs' => 'input-xs',
+    'sm' => 'input-sm',
+    'md' => 'input-md',
+    'lg' => 'input-lg',
+    default => '',
+};
 if ($ghost) $classes .= ' input-ghost';
 if ($validator) $classes .= ' validator';
 @endphp

@@ -7,8 +7,23 @@
 
 @php
 $classes = 'select';
-if ($color) $classes .= " select-{$color}";
-if ($size) $classes .= " select-{$size}";
+if ($color) $classes .= ' ' . match($color) {
+    'primary' => 'select-primary',
+    'secondary' => 'select-secondary',
+    'accent' => 'select-accent',
+    'info' => 'select-info',
+    'success' => 'select-success',
+    'warning' => 'select-warning',
+    'error' => 'select-error',
+    default => '',
+};
+if ($size) $classes .= ' ' . match($size) {
+    'xs' => 'select-xs',
+    'sm' => 'select-sm',
+    'md' => 'select-md',
+    'lg' => 'select-lg',
+    default => '',
+};
 if ($ghost) $classes .= ' select-ghost';
 if ($validator) $classes .= ' validator';
 @endphp

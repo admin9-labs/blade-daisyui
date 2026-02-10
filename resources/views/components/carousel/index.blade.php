@@ -5,7 +5,12 @@
 
 @php
 $classes = 'carousel';
-if ($snap) $classes .= " carousel-{$snap}";
+if ($snap) $classes .= ' ' . match($snap) {
+    'start' => 'carousel-start',
+    'center' => 'carousel-center',
+    'end' => 'carousel-end',
+    default => '',
+};
 if ($vertical) $classes .= ' carousel-vertical';
 @endphp
 

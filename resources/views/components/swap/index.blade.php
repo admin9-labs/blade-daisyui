@@ -6,7 +6,11 @@
 @php
 $classes = 'swap';
 if ($active) $classes .= ' swap-active';
-if ($effect) $classes .= " swap-{$effect}";
+if ($effect) $classes .= ' ' . match($effect) {
+    'rotate' => 'swap-rotate',
+    'flip' => 'swap-flip',
+    default => '',
+};
 @endphp
 
 <label {{ $attributes->merge(['class' => $classes]) }}>

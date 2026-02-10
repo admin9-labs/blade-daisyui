@@ -5,7 +5,13 @@
 
 @php
 $classes = 'link';
-if ($color) $classes .= " link-{$color}";
+if ($color) $classes .= ' ' . match($color) {
+    'primary' => 'link-primary',
+    'secondary' => 'link-secondary',
+    'accent' => 'link-accent',
+    'neutral' => 'link-neutral',
+    default => '',
+};
 if ($hover) $classes .= ' link-hover';
 @endphp
 

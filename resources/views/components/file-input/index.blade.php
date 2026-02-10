@@ -6,8 +6,23 @@
 
 @php
 $classes = 'file-input';
-if ($color) $classes .= " file-input-{$color}";
-if ($size) $classes .= " file-input-{$size}";
+if ($color) $classes .= ' ' . match($color) {
+    'primary' => 'file-input-primary',
+    'secondary' => 'file-input-secondary',
+    'accent' => 'file-input-accent',
+    'info' => 'file-input-info',
+    'success' => 'file-input-success',
+    'warning' => 'file-input-warning',
+    'error' => 'file-input-error',
+    default => '',
+};
+if ($size) $classes .= ' ' . match($size) {
+    'xs' => 'file-input-xs',
+    'sm' => 'file-input-sm',
+    'md' => 'file-input-md',
+    'lg' => 'file-input-lg',
+    default => '',
+};
 if ($ghost) $classes .= ' file-input-ghost';
 @endphp
 

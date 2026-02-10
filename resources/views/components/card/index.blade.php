@@ -6,8 +6,17 @@
 
 @php
 $classes = 'card';
-if ($variant) $classes .= " card-{$variant}";
-if ($size) $classes .= " card-{$size}";
+if ($variant) $classes .= ' ' . match($variant) {
+    'bordered' => 'card-bordered',
+    'dash' => 'card-dash',
+    'side' => 'card-side',
+    default => '',
+};
+if ($size) $classes .= ' ' . match($size) {
+    'compact' => 'card-compact',
+    'normal' => 'card-normal',
+    default => '',
+};
 if ($side) $classes .= ' card-side';
 @endphp
 

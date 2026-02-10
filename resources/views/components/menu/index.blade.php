@@ -5,8 +5,18 @@
 
 @php
 $classes = 'menu';
-if ($size) $classes .= " menu-{$size}";
-if ($direction) $classes .= " menu-{$direction}";
+if ($size) $classes .= ' ' . match($size) {
+    'xs' => 'menu-xs',
+    'sm' => 'menu-sm',
+    'md' => 'menu-md',
+    'lg' => 'menu-lg',
+    default => '',
+};
+if ($direction) $classes .= ' ' . match($direction) {
+    'horizontal' => 'menu-horizontal',
+    'vertical' => 'menu-vertical',
+    default => '',
+};
 @endphp
 
 <ul {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</ul>

@@ -16,9 +16,32 @@ $allowedTags = ['button', 'a', 'input', 'label', 'span', 'div'];
 $tag = in_array($tag, $allowedTags, true) ? $tag : 'button';
 
 $classes = 'btn';
-if ($color) $classes .= " btn-{$color}";
-if ($size) $classes .= " btn-{$size}";
-if ($variant) $classes .= " btn-{$variant}";
+if ($color) $classes .= ' ' . match($color) {
+    'primary' => 'btn-primary',
+    'secondary' => 'btn-secondary',
+    'accent' => 'btn-accent',
+    'info' => 'btn-info',
+    'success' => 'btn-success',
+    'warning' => 'btn-warning',
+    'error' => 'btn-error',
+    'neutral' => 'btn-neutral',
+    'ghost' => 'btn-ghost',
+    default => '',
+};
+if ($size) $classes .= ' ' . match($size) {
+    'xs' => 'btn-xs',
+    'sm' => 'btn-sm',
+    'md' => 'btn-md',
+    'lg' => 'btn-lg',
+    default => '',
+};
+if ($variant) $classes .= ' ' . match($variant) {
+    'outline' => 'btn-outline',
+    'link' => 'btn-link',
+    'soft' => 'btn-soft',
+    'dash' => 'btn-dash',
+    default => '',
+};
 if ($wide) $classes .= ' btn-wide';
 if ($block) $classes .= ' btn-block';
 if ($square) $classes .= ' btn-square';

@@ -8,7 +8,11 @@
 
 @php
 $classes = 'collapse';
-if ($icon) $classes .= " collapse-{$icon}";
+if ($icon) $classes .= ' ' . match($icon) {
+    'arrow' => 'collapse-arrow',
+    'plus' => 'collapse-plus',
+    default => '',
+};
 @endphp
 
 <div {{ $attributes->merge(['class' => $classes]) }}>

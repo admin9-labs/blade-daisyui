@@ -7,7 +7,12 @@
 @php
 $classes = 'modal';
 if ($open) $classes .= ' modal-open';
-if ($position) $classes .= " modal-{$position}";
+if ($position) $classes .= ' ' . match($position) {
+    'top' => 'modal-top',
+    'middle' => 'modal-middle',
+    'bottom' => 'modal-bottom',
+    default => '',
+};
 @endphp
 
 <dialog {{ $attributes->merge(['class' => $classes])->when($id, fn ($a) => $a->merge(['id' => $id])) }}>{{ $slot }}</dialog>
