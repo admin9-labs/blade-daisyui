@@ -85,8 +85,8 @@ class NavigationTest extends TestCase
 
     public function test_menu_with_size_and_direction(): void
     {
-        $this->blade('<x-dui::menu size="lg" direction="horizontal"><li>Item</li></x-dui::menu>')
-            ->assertSee('menu-lg', false)
+        $this->blade('<x-dui::menu size="xl" direction="horizontal"><li>Item</li></x-dui::menu>')
+            ->assertSee('menu-xl', false)
             ->assertSee('menu-horizontal', false);
     }
 
@@ -281,9 +281,9 @@ class NavigationTest extends TestCase
 
     public function test_tab_with_variant_and_size(): void
     {
-        $this->blade('<x-dui::tab variant="bordered" size="lg">Tabs</x-dui::tab>')
-            ->assertSee('tabs-bordered', false)
-            ->assertSee('tabs-lg', false);
+        $this->blade('<x-dui::tab variant="border" size="xl">Tabs</x-dui::tab>')
+            ->assertSee('tabs-border', false)
+            ->assertSee('tabs-xl', false);
     }
 
     // ─── Tab Item ─────────────────────────────────────────

@@ -7,14 +7,19 @@
 @php
 $classes = 'card';
 if ($variant) $classes .= ' ' . match($variant) {
-    'bordered' => 'card-bordered',
+    'border' => 'card-border',
+    'bordered' => 'card-border',
     'dash' => 'card-dash',
-    'side' => 'card-side',
     default => '',
 };
 if ($size) $classes .= ' ' . match($size) {
-    'compact' => 'card-compact',
-    'normal' => 'card-normal',
+    'xs' => 'card-xs',
+    'sm' => 'card-sm',
+    'md' => 'card-md',
+    'lg' => 'card-lg',
+    'xl' => 'card-xl',
+    'compact' => 'card-sm',
+    'normal' => 'card-md',
     default => '',
 };
 if ($side) $classes .= ' card-side';

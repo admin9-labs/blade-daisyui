@@ -33,6 +33,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'btn-sm',
     'md' => 'btn-md',
     'lg' => 'btn-lg',
+    'xl' => 'btn-xl',
     default => '',
 };
 if ($variant) $classes .= ' ' . match($variant) {
@@ -40,6 +41,7 @@ if ($variant) $classes .= ' ' . match($variant) {
     'link' => 'btn-link',
     'soft' => 'btn-soft',
     'dash' => 'btn-dash',
+    'ghost' => 'btn-ghost',
     default => '',
 };
 if ($wide) $classes .= ' btn-wide';
@@ -48,6 +50,17 @@ if ($square) $classes .= ' btn-square';
 if ($circle) $classes .= ' btn-circle';
 if ($active) $classes .= ' btn-active';
 if ($disabled) $classes .= ' btn-disabled';
+
+$inputAttributes = array_filter([
+    'class' => $classes,
+    'type' => $attributes->get('type', 'button'),
+    'value' => $attributes->get('value') ?? (($slotContent = trim((string) $slot)) !== '' ? $slotContent : null),
+    'disabled' => $disabled ? 'disabled' : null,
+], fn ($value) => $value !== null);
 @endphp
 
-<{{ $tag }} {{ $attributes->merge(['class' => $classes])->when($disabled && $tag === 'button', fn ($a) => $a->merge(['disabled' => 'disabled'])) }}>{{ $slot }}</{{ $tag }}>
+@if ($tag === 'input')
+    <input {{ $attributes->merge($inputAttributes) }} />
+@else
+    <{{ $tag }} {{ $attributes->merge(['class' => $classes])->when($disabled && $tag === 'button', fn ($a) => $a->merge(['disabled' => 'disabled'])) }}>{{ $slot }}</{{ $tag }}>
+@endif

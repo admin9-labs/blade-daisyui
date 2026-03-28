@@ -15,6 +15,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'table-sm',
     'md' => 'table-md',
     'lg' => 'table-lg',
+    'xl' => 'table-xl',
     default => '',
 };
 @endphp

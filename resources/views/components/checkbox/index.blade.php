@@ -6,6 +6,7 @@
 @php
 $classes = 'checkbox';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'checkbox-neutral',
     'primary' => 'checkbox-primary',
     'secondary' => 'checkbox-secondary',
     'accent' => 'checkbox-accent',
@@ -20,6 +21,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'checkbox-sm',
     'md' => 'checkbox-md',
     'lg' => 'checkbox-lg',
+    'xl' => 'checkbox-xl',
     default => '',
 };
 @endphp

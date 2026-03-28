@@ -18,6 +18,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'loading-sm',
     'md' => 'loading-md',
     'lg' => 'loading-lg',
+    'xl' => 'loading-xl',
     default => '',
 };
 @endphp

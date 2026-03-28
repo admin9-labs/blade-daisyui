@@ -7,6 +7,7 @@
 @php
 $classes = 'file-input';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'file-input-neutral',
     'primary' => 'file-input-primary',
     'secondary' => 'file-input-secondary',
     'accent' => 'file-input-accent',
@@ -21,6 +22,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'file-input-sm',
     'md' => 'file-input-md',
     'lg' => 'file-input-lg',
+    'xl' => 'file-input-xl',
     default => '',
 };
 if ($ghost) $classes .= ' file-input-ghost';

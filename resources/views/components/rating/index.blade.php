@@ -12,6 +12,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'rating-sm',
     'md' => 'rating-md',
     'lg' => 'rating-lg',
+    'xl' => 'rating-xl',
     default => '',
 };
 @endphp

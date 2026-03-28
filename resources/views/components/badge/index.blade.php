@@ -23,10 +23,14 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'badge-sm',
     'md' => 'badge-md',
     'lg' => 'badge-lg',
+    'xl' => 'badge-xl',
     default => '',
 };
 if ($variant) $classes .= ' ' . match($variant) {
     'outline' => 'badge-outline',
+    'dash' => 'badge-dash',
+    'soft' => 'badge-soft',
+    'ghost' => 'badge-ghost',
     default => '',
 };
 @endphp

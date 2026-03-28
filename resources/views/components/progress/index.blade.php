@@ -7,6 +7,7 @@
 @php
 $classes = 'progress';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'progress-neutral',
     'primary' => 'progress-primary',
     'secondary' => 'progress-secondary',
     'accent' => 'progress-accent',

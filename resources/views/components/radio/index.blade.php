@@ -6,6 +6,7 @@
 @php
 $classes = 'radio';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'radio-neutral',
     'primary' => 'radio-primary',
     'secondary' => 'radio-secondary',
     'accent' => 'radio-accent',
@@ -20,6 +21,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'radio-sm',
     'md' => 'radio-md',
     'lg' => 'radio-lg',
+    'xl' => 'radio-xl',
     default => '',
 };
 @endphp

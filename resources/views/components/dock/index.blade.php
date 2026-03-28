@@ -9,6 +9,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'dock-sm',
     'md' => 'dock-md',
     'lg' => 'dock-lg',
+    'xl' => 'dock-xl',
     default => '',
 };
 @endphp

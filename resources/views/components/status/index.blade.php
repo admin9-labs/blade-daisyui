@@ -21,6 +21,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'status-sm',
     'md' => 'status-md',
     'lg' => 'status-lg',
+    'xl' => 'status-xl',
     default => '',
 };
 @endphp

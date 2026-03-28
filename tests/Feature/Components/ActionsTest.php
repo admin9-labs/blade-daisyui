@@ -124,11 +124,28 @@ class ActionsTest extends TestCase
             ->assertSee('btn-lg', false);
     }
 
+    public function test_button_supports_xl_size_and_ghost_variant(): void
+    {
+        $this->blade('<x-dui::button size="xl" variant="ghost">Go</x-dui::button>')
+            ->assertSee('btn-xl', false)
+            ->assertSee('btn-ghost', false);
+    }
+
     public function test_button_disabled_adds_class_and_attribute(): void
     {
         $this->blade('<x-dui::button :disabled="true">No</x-dui::button>')
             ->assertSee('btn-disabled', false)
             ->assertSee('disabled="disabled"', false);
+    }
+
+    public function test_button_tag_input_renders_valid_input_markup(): void
+    {
+        $this->blade('<x-dui::button tag="input" type="submit" :disabled="true">Send</x-dui::button>')
+            ->assertSee('<input', false)
+            ->assertSee('type="submit"', false)
+            ->assertSee('value="Send"', false)
+            ->assertSee('disabled="disabled"', false)
+            ->assertDontSee('</input>', false);
     }
 
     public function test_button_wide_and_block(): void
@@ -264,6 +281,12 @@ class ActionsTest extends TestCase
             ->assertSee('loading-lg', false);
     }
 
+    public function test_loading_supports_xl_size(): void
+    {
+        $this->blade('<x-dui::loading size="xl" />')
+            ->assertSee('loading-xl', false);
+    }
+
     // ─── Progress ──────────────────────────────────────────────
 
     public function test_progress_renders_with_progress_class_and_max(): void
@@ -281,6 +304,13 @@ class ActionsTest extends TestCase
             ->assertSee('progress-primary', false)
             ->assertSee('value="50"', false)
             ->assertSee('max="200"', false);
+    }
+
+    public function test_progress_supports_neutral_color(): void
+    {
+        $this->blade('<x-dui::progress color="neutral" :value="40" />')
+            ->assertSee('progress-neutral', false)
+            ->assertSee('value="40"', false);
     }
 
     // ─── Radial Progress ─────────────────────────────────────

@@ -9,6 +9,7 @@
 @php
 $classes = 'input';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'input-neutral',
     'primary' => 'input-primary',
     'secondary' => 'input-secondary',
     'accent' => 'input-accent',
@@ -23,6 +24,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'input-sm',
     'md' => 'input-md',
     'lg' => 'input-lg',
+    'xl' => 'input-xl',
     default => '',
 };
 if ($ghost) $classes .= ' input-ghost';

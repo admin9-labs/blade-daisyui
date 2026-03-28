@@ -46,6 +46,13 @@ class DataDisplayTest extends TestCase
             ->assertSee('badge-lg', false);
     }
 
+    public function test_badge_supports_xl_size_and_ghost_variant(): void
+    {
+        $this->blade('<x-dui::badge size="xl" variant="ghost">Tag</x-dui::badge>')
+            ->assertSee('badge-xl', false)
+            ->assertSee('badge-ghost', false);
+    }
+
     public function test_badge_class_merge(): void
     {
         $this->blade('<x-dui::badge color="info" class="gap-2">New</x-dui::badge>')
@@ -71,8 +78,9 @@ class DataDisplayTest extends TestCase
 
     public function test_card_with_variant_and_side(): void
     {
-        $this->blade('<x-dui::card variant="bordered" :side="true">C</x-dui::card>')
-            ->assertSee('card-bordered', false)
+        $this->blade('<x-dui::card variant="border" size="xl" :side="true">C</x-dui::card>')
+            ->assertSee('card-border', false)
+            ->assertSee('card-xl', false)
             ->assertSee('card-side', false);
     }
 
@@ -270,9 +278,9 @@ class DataDisplayTest extends TestCase
 
     public function test_status_with_color_and_size(): void
     {
-        $this->blade('<x-dui::status color="success" size="lg" />')
-            ->assertSee('status-success', false)
-            ->assertSee('status-lg', false);
+        $this->blade('<x-dui::status color="neutral" size="xl" />')
+            ->assertSee('status-neutral', false)
+            ->assertSee('status-xl', false);
     }
 
     // ── Table ─────────────────────────────────────────────────
@@ -294,8 +302,8 @@ class DataDisplayTest extends TestCase
 
     public function test_table_with_size(): void
     {
-        $this->blade('<x-dui::table size="xs"><tr><td>B</td></tr></x-dui::table>')
-            ->assertSee('table-xs', false);
+        $this->blade('<x-dui::table size="xl"><tr><td>B</td></tr></x-dui::table>')
+            ->assertSee('table-xl', false);
     }
 
     // ── Timeline ──────────────────────────────────────────────

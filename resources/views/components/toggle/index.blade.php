@@ -6,6 +6,7 @@
 @php
 $classes = 'toggle';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'toggle-neutral',
     'primary' => 'toggle-primary',
     'secondary' => 'toggle-secondary',
     'accent' => 'toggle-accent',
@@ -20,6 +21,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'toggle-sm',
     'md' => 'toggle-md',
     'lg' => 'toggle-lg',
+    'xl' => 'toggle-xl',
     default => '',
 };
 @endphp

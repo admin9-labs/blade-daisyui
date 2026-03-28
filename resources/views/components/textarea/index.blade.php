@@ -8,6 +8,7 @@
 @php
 $classes = 'textarea';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'textarea-neutral',
     'primary' => 'textarea-primary',
     'secondary' => 'textarea-secondary',
     'accent' => 'textarea-accent',
@@ -22,6 +23,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'textarea-sm',
     'md' => 'textarea-md',
     'lg' => 'textarea-lg',
+    'xl' => 'textarea-xl',
     default => '',
 };
 if ($ghost) $classes .= ' textarea-ghost';

@@ -9,6 +9,7 @@
 @php
 $classes = 'range';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'range-neutral',
     'primary' => 'range-primary',
     'secondary' => 'range-secondary',
     'accent' => 'range-accent',
@@ -23,6 +24,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'range-sm',
     'md' => 'range-md',
     'lg' => 'range-lg',
+    'xl' => 'range-xl',
     default => '',
 };
 @endphp

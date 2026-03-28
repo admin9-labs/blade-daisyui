@@ -8,6 +8,7 @@
 @php
 $classes = 'select';
 if ($color) $classes .= ' ' . match($color) {
+    'neutral' => 'select-neutral',
     'primary' => 'select-primary',
     'secondary' => 'select-secondary',
     'accent' => 'select-accent',
@@ -22,6 +23,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'select-sm',
     'md' => 'select-md',
     'lg' => 'select-lg',
+    'xl' => 'select-xl',
     default => '',
 };
 if ($ghost) $classes .= ' select-ghost';

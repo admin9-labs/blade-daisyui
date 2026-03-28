@@ -10,6 +10,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'menu-sm',
     'md' => 'menu-md',
     'lg' => 'menu-lg',
+    'xl' => 'menu-xl',
     default => '',
 };
 if ($direction) $classes .= ' ' . match($direction) {

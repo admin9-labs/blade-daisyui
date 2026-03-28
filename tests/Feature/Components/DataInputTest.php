@@ -22,6 +22,13 @@ class DataInputTest extends TestCase
             ->assertSee('checkbox-lg', false);
     }
 
+    public function test_checkbox_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::checkbox color="neutral" size="xl" />')
+            ->assertSee('checkbox-neutral', false)
+            ->assertSee('checkbox-xl', false);
+    }
+
     // ─── Fieldset ───────────────────────────────────────────
 
     public function test_fieldset_renders_with_class(): void
@@ -68,6 +75,13 @@ class DataInputTest extends TestCase
         $this->blade('<x-dui::file-input color="secondary" :ghost="true" />')
             ->assertSee('file-input-secondary', false)
             ->assertSee('file-input-ghost', false);
+    }
+
+    public function test_file_input_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::file-input color="neutral" size="xl" />')
+            ->assertSee('file-input-neutral', false)
+            ->assertSee('file-input-xl', false);
     }
 
     // ─── Filter ─────────────────────────────────────────────
@@ -135,6 +149,13 @@ class DataInputTest extends TestCase
             ->assertSee('input-ghost', false);
     }
 
+    public function test_input_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::input color="neutral" size="xl" />')
+            ->assertSee('input-neutral', false)
+            ->assertSee('input-xl', false);
+    }
+
     public function test_input_with_email_type(): void
     {
         $this->blade('<x-dui::input type="email" />')
@@ -195,6 +216,13 @@ class DataInputTest extends TestCase
             ->assertSee('radio-sm', false);
     }
 
+    public function test_radio_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::radio color="neutral" size="xl" />')
+            ->assertSee('radio-neutral', false)
+            ->assertSee('radio-xl', false);
+    }
+
     // ─── Range ──────────────────────────────────────────────
 
     public function test_range_renders_with_type_and_class(): void
@@ -213,6 +241,13 @@ class DataInputTest extends TestCase
             ->assertSee('step="5"', false);
     }
 
+    public function test_range_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::range color="neutral" size="xl" min="0" max="100" />')
+            ->assertSee('range-neutral', false)
+            ->assertSee('range-xl', false);
+    }
+
     // ─── Rating ─────────────────────────────────────────────
 
     public function test_rating_renders_with_class(): void
@@ -226,6 +261,12 @@ class DataInputTest extends TestCase
     {
         $this->blade('<x-dui::rating :half="true">Stars</x-dui::rating>')
             ->assertSee('rating-half', false);
+    }
+
+    public function test_rating_supports_xl_size(): void
+    {
+        $this->blade('<x-dui::rating size="xl">Stars</x-dui::rating>')
+            ->assertSee('rating-xl', false);
     }
 
     public function test_rating_hidden_adds_hidden_input(): void
@@ -280,6 +321,13 @@ class DataInputTest extends TestCase
             ->assertSee('select-ghost', false);
     }
 
+    public function test_select_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::select color="neutral" size="xl"><option>B</option></x-dui::select>')
+            ->assertSee('select-neutral', false)
+            ->assertSee('select-xl', false);
+    }
+
     public function test_select_with_validator_prop_adds_validator_class(): void
     {
         $this->blade('<x-dui::select :validator="true"><option>A</option></x-dui::select>')
@@ -302,6 +350,13 @@ class DataInputTest extends TestCase
             ->assertSee('textarea-ghost', false);
     }
 
+    public function test_textarea_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::textarea color="neutral" size="xl">Text</x-dui::textarea>')
+            ->assertSee('textarea-neutral', false)
+            ->assertSee('textarea-xl', false);
+    }
+
     public function test_textarea_with_validator_prop_adds_validator_class(): void
     {
         $this->blade('<x-dui::textarea :validator="true">Text</x-dui::textarea>')
@@ -322,5 +377,12 @@ class DataInputTest extends TestCase
         $this->blade('<x-dui::toggle color="success" size="md" />')
             ->assertSee('toggle-success', false)
             ->assertSee('toggle-md', false);
+    }
+
+    public function test_toggle_supports_neutral_and_xl(): void
+    {
+        $this->blade('<x-dui::toggle color="neutral" size="xl" />')
+            ->assertSee('toggle-neutral', false)
+            ->assertSee('toggle-xl', false);
     }
 }

@@ -7,9 +7,12 @@
 @php
 $classes = 'tabs';
 if ($variant) $classes .= ' ' . match($variant) {
-    'bordered' => 'tabs-bordered',
-    'lifted' => 'tabs-lifted',
-    'boxed' => 'tabs-boxed',
+    'border' => 'tabs-border',
+    'bordered' => 'tabs-border',
+    'lift' => 'tabs-lift',
+    'lifted' => 'tabs-lift',
+    'box' => 'tabs-box',
+    'boxed' => 'tabs-box',
     default => '',
 };
 if ($size) $classes .= ' ' . match($size) {
@@ -17,6 +20,7 @@ if ($size) $classes .= ' ' . match($size) {
     'sm' => 'tabs-sm',
     'md' => 'tabs-md',
     'lg' => 'tabs-lg',
+    'xl' => 'tabs-xl',
     default => '',
 };
 if ($placement) $classes .= ' ' . match($placement) {
