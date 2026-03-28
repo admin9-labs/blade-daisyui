@@ -18,9 +18,9 @@ class ServiceProviderTest extends TestCase
         $this->artisan('vendor:publish', ['--tag' => 'blade-daisyui-examples', '--force' => true])
             ->assertExitCode(0);
 
-        $this->assertFileExists(resource_path('views/dui/control-room.blade.php'));
-        $this->assertFileExists(resource_path('views/dui/landing-editorial.blade.php'));
-        $this->assertFileExists(resource_path('views/dui/settings-lab.blade.php'));
+        $this->assertFileExists(resource_path('views/blade-daisyui/control-room.blade.php'));
+        $this->assertFileExists(resource_path('views/blade-daisyui/landing-editorial.blade.php'));
+        $this->assertFileExists(resource_path('views/blade-daisyui/settings-lab.blade.php'));
     }
 
     public function test_tailwind_stub_can_be_published(): void

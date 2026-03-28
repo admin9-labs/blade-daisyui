@@ -23,9 +23,9 @@ class BladeDaisyuiServiceProvider extends PackageServiceProvider
         );
 
         $exampleStubs = [
-            $this->package->basePath('/../stubs/views/dui/control-room.blade.php') => resource_path('views/dui/control-room.blade.php'),
-            $this->package->basePath('/../stubs/views/dui/landing-editorial.blade.php') => resource_path('views/dui/landing-editorial.blade.php'),
-            $this->package->basePath('/../stubs/views/dui/settings-lab.blade.php') => resource_path('views/dui/settings-lab.blade.php'),
+            $this->package->basePath('/../stubs/views/blade-daisyui/control-room.blade.php') => resource_path('views/blade-daisyui/control-room.blade.php'),
+            $this->package->basePath('/../stubs/views/blade-daisyui/landing-editorial.blade.php') => resource_path('views/blade-daisyui/landing-editorial.blade.php'),
+            $this->package->basePath('/../stubs/views/blade-daisyui/settings-lab.blade.php') => resource_path('views/blade-daisyui/settings-lab.blade.php'),
         ];
 
         $tailwindStub = [

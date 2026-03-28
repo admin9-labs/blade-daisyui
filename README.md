@@ -123,9 +123,9 @@ php artisan vendor:publish --tag=blade-daisyui-stubs
 
 This will publish:
 
-- `resources/views/dui/control-room.blade.php`
-- `resources/views/dui/landing-editorial.blade.php`
-- `resources/views/dui/settings-lab.blade.php`
+- `resources/views/blade-daisyui/control-room.blade.php`
+- `resources/views/blade-daisyui/landing-editorial.blade.php`
+- `resources/views/blade-daisyui/settings-lab.blade.php`
 - `resources/css/vendor/blade-daisyui-examples.css`
 
 The published wrapper views use:
@@ -138,7 +138,7 @@ The published wrapper views use:
 @endsection
 ```
 
-If your app uses a component layout instead of `@extends`, just edit the published stubs.
+If your app uses a component layout such as `<x-app-layout>` or `<x-layouts.app>`, just edit the published stubs and replace the `@extends(...)` form with your preferred layout wrapper.
 
 ### Minimal Host App Routes
 
@@ -147,9 +147,9 @@ Once the wrapper views are published, point routes to the host views instead of 
 ```php
 use Illuminate\Support\Facades\Route;
 
-Route::view('/dui/control-room', 'dui.control-room');
-Route::view('/dui/landing-editorial', 'dui.landing-editorial');
-Route::view('/dui/settings-lab', 'dui.settings-lab');
+Route::view('/dui/control-room', 'blade-daisyui.control-room');
+Route::view('/dui/landing-editorial', 'blade-daisyui.landing-editorial');
+Route::view('/dui/settings-lab', 'blade-daisyui.settings-lab');
 ```
 
 ### Minimal Host App Styling Requirements
