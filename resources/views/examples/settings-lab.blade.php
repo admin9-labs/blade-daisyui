@@ -8,24 +8,20 @@
 
 <style>
     .dui-settings-lab {
-        --dui-shell: #f3f7fb;
-        --dui-ink: #102033;
-        --dui-muted: rgba(16, 32, 51, 0.58);
-        --dui-line: rgba(16, 32, 51, 0.1);
-        --dui-panel: rgba(255, 255, 255, 0.86);
-        --dui-blue: #165dff;
-        --dui-lime: #2d8a57;
-        background:
-            radial-gradient(circle at top right, rgba(22, 93, 255, 0.12), transparent 24rem),
-            radial-gradient(circle at bottom left, rgba(45, 138, 87, 0.1), transparent 24rem),
-            linear-gradient(180deg, #f9fbfd 0%, var(--dui-shell) 100%);
+        --dui-shell: var(--color-base-200);
+        --dui-ink: var(--color-base-content);
+        --dui-muted: color-mix(in srgb, var(--color-base-content) 58%, transparent);
+        --dui-line: color-mix(in srgb, var(--color-base-content) 10%, transparent);
+        --dui-panel: color-mix(in srgb, var(--color-base-100) 86%, transparent);
+        --dui-blue: var(--color-primary);
+        --dui-lime: var(--color-success);
         color: var(--dui-ink);
     }
 
     .dui-settings-lab .lab-panel {
         border: 1px solid var(--dui-line);
         background: var(--dui-panel);
-        box-shadow: 0 18px 50px rgba(23, 46, 79, 0.08);
+        box-shadow: 0 18px 50px color-mix(in srgb, var(--color-base-content) 10%, transparent);
         backdrop-filter: blur(18px);
     }
 
@@ -35,26 +31,24 @@
     }
 </style>
 
-<div class="dui-settings-lab min-h-screen px-4 py-6 md:px-8 md:py-10">
+<div class="dui-settings-lab px-4 py-6 md:px-8 md:py-10">
     <div class="mx-auto flex max-w-7xl flex-col gap-6">
-        <x-dui::navbar class="lab-panel flex-col items-start gap-4 rounded-[2rem] px-5 py-4 md:flex-row md:items-center">
-            <x-dui::navbar.start class="w-full md:w-auto">
-                <div>
-                    <p class="lab-kicker text-[0.68rem] font-bold text-black/45">Settings Audit</p>
-                    <p class="text-xl font-black">Form Density Lab</p>
-                </div>
-            </x-dui::navbar.start>
-            <x-dui::navbar.center class="w-full justify-start md:w-auto md:justify-center">
-                <x-dui::badge color="info" variant="soft">Validation + Controls</x-dui::badge>
-            </x-dui::navbar.center>
-            <x-dui::navbar.end class="w-full justify-start md:w-auto md:justify-end">
-                <div class="flex flex-wrap items-center gap-2">
-                    <x-dui::theme-controller type="radio" name="dui-theme-settings" value="corporate" aria-label="Corporate theme" checked="checked" class="btn btn-sm btn-ghost rounded-full" />
-                    <x-dui::theme-controller type="radio" name="dui-theme-settings" value="business" aria-label="Business theme" class="btn btn-sm btn-ghost rounded-full" />
-                    <x-dui::theme-controller type="radio" name="dui-theme-settings" value="night" aria-label="Night theme" class="btn btn-sm btn-ghost rounded-full" />
-                </div>
-            </x-dui::navbar.end>
-        </x-dui::navbar>
+        <x-dui::examples.scene-header
+            containerClass="lab-panel flex-col items-start gap-4 rounded-[2rem] px-5 py-4 md:flex-row md:items-center"
+            kicker="Settings Audit"
+            kickerClass="lab-kicker text-[0.68rem] font-bold text-base-content/45"
+            title="Form Density Lab"
+            titleClass="text-xl font-black"
+            badge="Validation + Controls"
+            badgeColor="info"
+            badgeVariant="soft"
+            themeName="dui-theme-settings"
+            :themes="[
+                ['value' => 'corporate', 'label' => 'Corporate theme', 'checked' => true],
+                ['value' => 'business', 'label' => 'Business theme'],
+                ['value' => 'night', 'label' => 'Night theme'],
+            ]"
+        />
 
         <div class="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
             <div class="flex flex-col gap-6">
@@ -62,10 +56,10 @@
                     <x-dui::card.body class="gap-6">
                         <div class="flex flex-wrap items-start justify-between gap-4">
                             <div>
-                                <p class="lab-kicker text-xs font-bold text-black/40">Scene purpose</p>
+                                <p class="lab-kicker text-xs font-bold text-base-content/40">Scene purpose</p>
                                 <x-dui::card.title tag="h1" class="mt-2 text-2xl font-black sm:text-3xl md:text-4xl">Stress the form family under realistic settings density.</x-dui::card.title>
                             </div>
-                            <x-dui::badge color="neutral" class="border-none bg-black text-white">Scene 03</x-dui::badge>
+                            <x-dui::badge color="neutral" class="border-none">Scene 03</x-dui::badge>
                         </div>
 
                         <p class="max-w-3xl text-base leading-7 text-[color:var(--dui-muted)]">
@@ -84,7 +78,7 @@
                 <x-dui::card class="lab-panel rounded-[2rem] shadow-none">
                     <x-dui::card.body class="gap-6">
                         <div>
-                            <p class="lab-kicker text-xs font-bold text-black/40">Profile settings</p>
+                            <p class="lab-kicker text-xs font-bold text-base-content/40">Profile settings</p>
                             <x-dui::card.title tag="h2" class="mt-2 text-2xl font-black">Calibration form</x-dui::card.title>
                         </div>
 
@@ -120,7 +114,7 @@
                             </x-dui::fieldset>
 
                             <div class="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
-                                <x-dui::fieldset class="gap-3 rounded-[1.5rem] border border-[color:var(--dui-line)] bg-white/65 p-4">
+                                <x-dui::fieldset class="gap-3 rounded-[1.5rem] border border-[color:var(--dui-line)] bg-base-100/65 p-4">
                                     <x-dui::fieldset.legend>Alert level</x-dui::fieldset.legend>
                                     <label class="flex items-center gap-3">
                                         <x-dui::radio color="primary" name="alert-level" checked="checked" />
@@ -136,7 +130,7 @@
                                     </label>
                                 </x-dui::fieldset>
 
-                                <x-dui::fieldset class="gap-4 rounded-[1.5rem] border border-[color:var(--dui-line)] bg-white/65 p-4">
+                                <x-dui::fieldset class="gap-4 rounded-[1.5rem] border border-[color:var(--dui-line)] bg-base-100/65 p-4">
                                     <x-dui::fieldset.legend>Automation sensitivity</x-dui::fieldset.legend>
                                     <div class="space-y-3">
                                         <div class="flex items-center justify-between text-sm">
@@ -149,12 +143,12 @@
                                 </x-dui::fieldset>
                             </div>
 
-                            <div class="grid gap-4 rounded-[1.75rem] border border-[color:var(--dui-line)] bg-black text-white p-5">
+                            <div class="grid gap-4 rounded-[1.75rem] border border-[color:var(--dui-line)] bg-neutral text-neutral-content p-5">
                                 @foreach ($checks as $check)
                                     <label class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                                         <div>
                                             <p class="font-semibold">{{ $check['label'] }}</p>
-                                            <p class="text-sm text-white/60">{{ $check['desc'] }}</p>
+                                            <p class="text-sm text-neutral-content/60">{{ $check['desc'] }}</p>
                                         </div>
                                         <x-dui::toggle color="neutral" size="xl" @checked($check['checked']) />
                                     </label>
@@ -163,7 +157,7 @@
 
                             <div class="flex flex-wrap items-center gap-3">
                                 <x-dui::button color="primary" size="lg" class="w-full justify-center rounded-full px-7 sm:w-auto">Save Audit Profile</x-dui::button>
-                                <x-dui::button variant="ghost" size="lg" class="w-full justify-center rounded-full border border-[color:var(--dui-line)] px-7 sm:w-auto">Preview Validation State</x-dui::button>
+                                <x-dui::button variant="ghost" size="lg" class="w-full justify-center rounded-full border border-base-300 px-7 sm:w-auto">Preview Validation State</x-dui::button>
                                 <x-dui::button variant="dash" size="lg" class="w-full justify-center rounded-full px-7 sm:w-auto">Reset Density</x-dui::button>
                             </div>
                         </form>
@@ -188,11 +182,11 @@
                 <x-dui::card class="lab-panel rounded-[2rem] shadow-none">
                     <x-dui::card.body class="gap-5">
                         <div>
-                            <p class="lab-kicker text-xs font-bold text-black/40">Audit cues</p>
+                            <p class="lab-kicker text-xs font-bold text-base-content/40">Audit cues</p>
                             <x-dui::card.title tag="h2" class="mt-2 text-2xl font-black">What to watch on this screen</x-dui::card.title>
                         </div>
 
-                        <x-dui::list class="rounded-[1.5rem] border border-[color:var(--dui-line)] bg-white/70 p-3">
+                        <x-dui::list class="rounded-[1.5rem] border border-[color:var(--dui-line)] bg-base-100/70 p-3">
                             <x-dui::list.row class="grid-cols-[auto_1fr] gap-3 md:grid-cols-[auto_1fr_auto] md:items-center">
                                 <x-dui::status color="success"></x-dui::status>
                                 <div>

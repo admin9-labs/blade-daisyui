@@ -40,4 +40,9 @@ This repo ships low-level Blade wrappers around DaisyUI 5, so the most powerful 
 - The `theme-controller` switch in the showcases lets you cycle between `corporate`, `business`, and `night`. For each theme inspect backgrounds, shadows, and text contrast to ensure component classes adjust cleanly (e.g., `btn-neutral`, `badge-neutral`, `alert-soft`).
 - Track gradient overlays, noise, and glassy textures across all three showcases to make sure they don't conflict with DaisyUI color utilities.
 
+### Host layout boundary
+- Treat the example views as content partials that inherit the host Laravel app shell. The host should own page background, global typography, and outer layout framing.
+- Keep visual atmosphere attached to local surfaces such as hero panels, cards, and audit shells instead of painting the whole viewport inside the package view.
+- When reviewing host integration, confirm the examples still read clearly on top of the app's existing background and spacing system.
+
 By keeping this checklist in mind, you can rapidly evaluate whether component changes still behave visually in the three curated contexts. Add new notes to this document whenever you notice an audit pattern that should be tracked on future changes.
