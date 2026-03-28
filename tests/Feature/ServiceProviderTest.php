@@ -13,6 +13,17 @@ class ServiceProviderTest extends TestCase
             ->assertSeeText('OK');
     }
 
+    public function test_example_scene_header_component_is_registered(): void
+    {
+        $this->blade(
+            '<x-dui::examples.scene-header containerClass="navbar" kicker="Scene" kickerClass="text-xs" title="Header" titleClass="text-lg" themeName="scene-theme" badge="Audit" />'
+        )
+            ->assertSee('navbar', false)
+            ->assertSee('theme-controller', false)
+            ->assertSeeText('Header')
+            ->assertSeeText('Audit');
+    }
+
     public function test_example_wrappers_can_be_published(): void
     {
         $this->artisan('vendor:publish', ['--tag' => 'blade-daisyui-examples', '--force' => true])

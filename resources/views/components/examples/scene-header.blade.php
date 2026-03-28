@@ -34,9 +34,10 @@
     <x-dui::navbar.center class="{{ $centerClass }}">
         @if ($badge)
             <x-dui::badge
-                @class([$badgeClass])
-                @if($badgeColor) color="{{ $badgeColor }}" @endif
-                @if($badgeVariant) variant="{{ $badgeVariant }}" @endif
+                color="{{ $badgeColor ?? '' }}"
+                size=""
+                variant="{{ $badgeVariant ?? '' }}"
+                class="{{ $badgeClass }}"
             >{{ $badge }}</x-dui::badge>
         @endif
     </x-dui::navbar.center>
