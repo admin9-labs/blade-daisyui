@@ -22,8 +22,12 @@ if ($icon) $classes .= ' ' . match($icon) {
         <input type="checkbox" @if($checked) checked="checked" @endif />
     @endif
     @if ($title)
-        <div class="collapse-title">{{ $title }}</div>
-        <div class="collapse-content">{{ $slot }}</div>
+        <div class="collapse-title text-base-content text-lg leading-7 font-semibold md:text-xl">{{ $title }}</div>
+        <div class="collapse-content text-base-content/75 text-base leading-7">
+            <div class="[&_a]:text-primary [&_a]:transition-colors [&_a]:duration-200 [&_p+p]:mt-4">
+                {{ $slot }}
+            </div>
+        </div>
     @else
         {{ $slot }}
     @endif

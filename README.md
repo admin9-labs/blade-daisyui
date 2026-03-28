@@ -52,16 +52,16 @@ All components use the `dui` namespace:
 ## Components (65)
 
 ### Actions
-accordion, alert, button, dropdown, fab, loading, modal, progress, radial-progress, skeleton, swap, toast, tooltip, validator
+accordion, alert, button, dropdown, fab, loading, modal, progress, radial-progress, skeleton, swap, toast, tooltip
 
 ### Data Display
 avatar, badge, card, carousel, chat, countdown, diff, kbd, list, stat, status, table, timeline
 
 ### Data Input
-calendar, checkbox, file-input, filter, input, label, radio, range, rating, select, textarea, toggle, validator
+calendar, checkbox, fieldset, file-input, filter, input, label, radio, range, rating, select, textarea, toggle, validator
 
 ### Layout
-divider, dock, drawer, footer, hero, indicator, join, mask, navbar, stack
+collapse, divider, dock, drawer, footer, hero, indicator, join, mask, navbar, stack
 
 ### Navigation
 breadcrumbs, link, menu, pagination, steps, tab

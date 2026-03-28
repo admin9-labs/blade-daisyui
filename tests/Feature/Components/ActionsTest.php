@@ -64,8 +64,8 @@ class ActionsTest extends TestCase
     public function test_accordion_item_title_prop_renders_collapse_title_and_content(): void
     {
         $this->blade('<x-dui::accordion.item title="Question?">Answer</x-dui::accordion.item>')
-            ->assertSee('class="collapse-title"', false)
-            ->assertSee('class="collapse-content"', false)
+            ->assertSee('collapse-title', false)
+            ->assertSee('collapse-content', false)
             ->assertSeeText('Question?')
             ->assertSeeText('Answer');
     }
