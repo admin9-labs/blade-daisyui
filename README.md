@@ -113,6 +113,64 @@ Use the `docs/visual-audit.md` checklist while stepping through both scenes so y
 
 For component-level conclusions, see [`docs/component-audit.md`](docs/component-audit.md). That file summarizes which high-frequency primitives are visually stable, which ones are easy to misuse, and where follow-up work is actually worth doing.
 
+### Recommended: Publish The Host Stubs
+
+The package example views are content-only partials. The fastest way to use them in a real Laravel app is to publish the host wrapper views and the Tailwind/DaisyUI CSS stub:
+
+```bash
+php artisan vendor:publish --tag=blade-daisyui-stubs
+```
+
+This will publish:
+
+- `resources/views/dui/control-room.blade.php`
+- `resources/views/dui/landing-editorial.blade.php`
+- `resources/views/dui/settings-lab.blade.php`
+- `resources/css/vendor/blade-daisyui-examples.css`
+
+The published wrapper views use:
+
+```blade
+@extends('layouts.app')
+
+@section('content')
+    @include('blade-daisyui::examples.control-room')
+@endsection
+```
+
+If your app uses a component layout instead of `@extends`, just edit the published stubs.
+
+### Minimal Host App Routes
+
+Once the wrapper views are published, point routes to the host views instead of the package partials:
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::view('/dui/control-room', 'dui.control-room');
+Route::view('/dui/landing-editorial', 'dui.landing-editorial');
+Route::view('/dui/settings-lab', 'dui.settings-lab');
+```
+
+### Minimal Host App Styling Requirements
+
+The published CSS stub contains the required Tailwind + DaisyUI imports and scans the package Blade files:
+
+```css
+@import "tailwindcss";
+@plugin "daisyui";
+
+@source "../views/**/*.blade.php";
+@source "../js/**/*.js";
+@source "../../vendor/admin9/blade-daisyui/resources/views/**/*.blade.php";
+```
+
+Make sure your layout still loads the compiled assets, for example:
+
+```blade
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+```
+
 ## Testing
 
 ```bash

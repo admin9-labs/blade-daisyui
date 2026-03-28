@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@source "../views/**/*.blade.php";
+@source "../js/**/*.js";
+@source "../../vendor/admin9/blade-daisyui/resources/views/**/*.blade.php";

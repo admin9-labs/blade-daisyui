@@ -12,4 +12,22 @@ class ServiceProviderTest extends TestCase
             ->assertSee('badge', false)
             ->assertSeeText('OK');
     }
+
+    public function test_example_wrappers_can_be_published(): void
+    {
+        $this->artisan('vendor:publish', ['--tag' => 'blade-daisyui-examples', '--force' => true])
+            ->assertExitCode(0);
+
+        $this->assertFileExists(resource_path('views/dui/control-room.blade.php'));
+        $this->assertFileExists(resource_path('views/dui/landing-editorial.blade.php'));
+        $this->assertFileExists(resource_path('views/dui/settings-lab.blade.php'));
+    }
+
+    public function test_tailwind_stub_can_be_published(): void
+    {
+        $this->artisan('vendor:publish', ['--tag' => 'blade-daisyui-tailwind-stub', '--force' => true])
+            ->assertExitCode(0);
+
+        $this->assertFileExists(resource_path('css/vendor/blade-daisyui-examples.css'));
+    }
 }
