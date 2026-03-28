@@ -131,14 +131,12 @@ This will publish:
 The published wrapper views use:
 
 ```blade
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @include('blade-daisyui::examples.control-room')
-@endsection
+</x-layouts.app>
 ```
 
-If your app uses a component layout such as `<x-app-layout>` or `<x-layouts.app>`, just edit the published stubs and replace the `@extends(...)` form with your preferred layout wrapper.
+If your app uses a different layout component or a section-based layout, just edit the published stubs and replace `<x-layouts.app>` with your preferred wrapper.
 
 ### Minimal Host App Routes
 

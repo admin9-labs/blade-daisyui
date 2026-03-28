@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @include('blade-daisyui::examples.control-room')
-@endsection
+</x-layouts.app>

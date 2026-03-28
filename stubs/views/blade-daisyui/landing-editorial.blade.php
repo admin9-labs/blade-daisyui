@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layouts.app>
     @include('blade-daisyui::examples.landing-editorial')
-@endsection
+</x-layouts.app>
