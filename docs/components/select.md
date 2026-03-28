@@ -19,6 +19,7 @@ DaisyUI [Select](https://daisyui.com/components/select/) 的 Blade 封装。
 | color | string | null | neutral, primary, secondary, accent, info, success, warning, error |
 | size | string | null | xs, sm, md, lg, xl |
 | ghost | bool | false | — |
+| validator | bool | false | 为元素添加 `validator` class |
 
 ## 示例
 
@@ -89,6 +90,16 @@ DaisyUI [Select](https://daisyui.com/components/select/) 的 Blade 封装。
 </x-dui::select>
 ```
 
+### 验证态
+```blade
+<x-dui::select :validator="true" required>
+  <option disabled selected value="">Choose one</option>
+  <option>Corporate</option>
+  <option>Business</option>
+</x-dui::select>
+<x-dui::validator.hint>Required</x-dui::validator.hint>
+```
+
 ## 渲染结果
 ```html
 <select class="select">
@@ -97,4 +108,19 @@ DaisyUI [Select](https://daisyui.com/components/select/) 的 Blade 封装。
 </select>
 <select class="select select-primary">...</select>
 <select class="select select-lg select-ghost">...</select>
+<select class="select validator" required>...</select>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 选项数量有限且用户需要明显理解当前选择的场景
+- 设置页和工具栏里较低强调度的配置切换
+- 与 `neutral`、`validator` 组合形成稳定的后台表单风格
+
+### Avoid when
+
+- 在没有 label 的情况下单独放置 select
+- 在低对比背景里直接使用 `ghost`
+- 用 select 承载过长、过多的选项而不做分组或说明

@@ -127,3 +127,17 @@ DaisyUI [Table](https://daisyui.com/components/table/) 的 Blade 封装。
     </tbody>
 </table>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 操作后台、审计页、列表页中的结构化数据
+- 需要 `zebra`、尺寸控制、固定头行/列的场景
+- 放在 card / panel 中，与标题和状态提示形成完整模块
+
+### Avoid when
+
+- 把表格直接扔在空白页面上，不提供容器和标题上下文
+- 在每行里同时堆太多按钮、badge、状态点
+- 忽略窄屏下的行高、换行和横向滚动策略

@@ -170,3 +170,17 @@ Tab 内容面板，紧跟在 tab 按钮/radio 后面。
     <div class="tab-content border-base-300 bg-base-100 p-10">Tab content 2</div>
 </div>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 平行内容切换，尤其是设置页、详情页中的同级内容块
+- 配合 `tab.item` 保持结构一致
+- 在卡片或面板上方做轻量内容切换时优先选 `lift` 或 `box`
+
+### Avoid when
+
+- 为不平行的信息强行套 Tabs
+- `border` tabs 叠在已经有明显边框的面板上，造成双重边线
+- 在极窄空间中放过多 tab item，导致点击目标和标签阅读同时变差

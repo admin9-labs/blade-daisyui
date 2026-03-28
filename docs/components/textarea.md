@@ -15,6 +15,7 @@ DaisyUI [Textarea](https://daisyui.com/components/textarea/) 的 Blade 封装。
 | color | string | null | neutral, primary, secondary, accent, info, success, warning, error |
 | size | string | null | xs, sm, md, lg, xl |
 | ghost | bool | false | — |
+| validator | bool | false | 为元素添加 `validator` class |
 
 ## 示例
 
@@ -63,9 +64,30 @@ DaisyUI [Textarea](https://daisyui.com/components/textarea/) 的 Blade 封装。
 <x-dui::textarea placeholder="Bio" disabled></x-dui::textarea>
 ```
 
+### 验证态
+```blade
+<x-dui::textarea :validator="true" required placeholder="Review note"></x-dui::textarea>
+<x-dui::validator.hint>Required</x-dui::validator.hint>
+```
+
 ## 渲染结果
 ```html
 <textarea class="textarea" placeholder="Bio"></textarea>
 <textarea class="textarea textarea-primary" placeholder="Primary"></textarea>
 <textarea class="textarea textarea-lg textarea-ghost" placeholder="Bio"></textarea>
+<textarea class="textarea validator" required placeholder="Review note"></textarea>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 需要描述性输入的审核页、设置页、内容后台
+- 和 `neutral` 表单组合搭配，维持 calm hierarchy
+- 与 validator hint 配合，表达输入质量要求
+
+### Avoid when
+
+- 仅靠 placeholder 承载长说明
+- 在没有外层边界的面板里使用 `ghost`
+- 给 textarea 过大的视觉强调，抢走主动作的注意力

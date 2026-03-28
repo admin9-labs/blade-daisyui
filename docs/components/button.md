@@ -19,7 +19,7 @@ DaisyUI [Button](https://daisyui.com/components/button/) 的 Blade 封装。
 | block | bool | false | — |
 | square | bool | false | — |
 | circle | bool | false | — |
-| tag | string | 'button' | button, a, input, label 等任意 HTML 标签 |
+| tag | string | 'button' | button, a, input, label, span, div |
 | active | bool | false | — |
 | disabled | bool | false | — |
 
@@ -67,6 +67,7 @@ DaisyUI [Button](https://daisyui.com/components/button/) 的 Blade 封装。
 
 ```blade
 <x-dui::button tag="a" href="/about">Link Button</x-dui::button>
+<x-dui::button tag="input" type="submit" value="Save changes" />
 ```
 
 ### 禁用状态
@@ -93,6 +94,23 @@ DaisyUI [Button](https://daisyui.com/components/button/) 的 Blade 封装。
 <!-- 使用其他标签 -->
 <a class="btn btn-primary" href="/about">Link Button</a>
 
+<!-- input 标签 -->
+<input class="btn" type="submit" value="Save changes" />
+
 <!-- 禁用 -->
 <button class="btn btn-disabled" disabled="disabled">Disabled</button>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 页面中的主次动作分层，例如 `primary` 配 `ghost` / `dash`
+- 需要 `xl` 尺寸的 CTA、Hero 操作区、重要确认动作
+- 需要把按钮语义映射到 `a` 或 `input` 的场景
+
+### Avoid when
+
+- 在同一块区域放三个以上同等级高强调按钮
+- 把 `circle` / `square` 用在带长文案的按钮上
+- 仅为了改样式就切换 `tag`，而不考虑真实语义

@@ -93,6 +93,26 @@ Every component merges your classes with its defaults:
 <x-dui::button color="primary" class="mt-4">Go</x-dui::button>
 ```
 
+## Visual Review
+
+The package now includes curated example views under the `blade-daisyui::examples.*` namespace. Mount them in any Laravel app to exercise the components together and validate the visual hierarchy described in [`docs/visual-audit.md`](docs/visual-audit.md) :
+
+```php
+use Illuminate\Support\Facades\Route;
+
+Route::view('/dui/control-room', 'blade-daisyui::examples.control-room');
+Route::view('/dui/landing-editorial', 'blade-daisyui::examples.landing-editorial');
+Route::view('/dui/settings-lab', 'blade-daisyui::examples.settings-lab');
+```
+
+- `blade-daisyui::examples.control-room` is the administrative control surface that stresses hierarchy, density, tables, alerts, and complex form combinations.
+- `blade-daisyui::examples.landing-editorial` is a content-marketing scene that proves the same toolkit can compose gradients, hero storytelling, and layered badges without collapsing into a generic layout.
+- `blade-daisyui::examples.settings-lab` is the form-heavy settings scene that stresses neutral controls, validation, filters, toggles, radios, and dense field groupings.
+
+Use the `docs/visual-audit.md` checklist while stepping through both scenes so you notice density shifts, theme transitions, badge pressure, and form behavior before releasing component changes.
+
+For component-level conclusions, see [`docs/component-audit.md`](docs/component-audit.md). That file summarizes which high-frequency primitives are visually stable, which ones are easy to misuse, and where follow-up work is actually worth doing.
+
 ## Testing
 
 ```bash

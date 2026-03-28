@@ -62,3 +62,17 @@ DaisyUI [Badge](https://daisyui.com/components/badge/) 的 Blade 封装。
 ```html
 <span class="badge badge-primary badge-lg badge-soft">Primary</span>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 状态、类别、阶段这类短标签
+- 表格或列表中的辅助信号，优先使用 `soft` 或 `outline`
+- 和 `status` 组合，让颜色表达状态、文本表达含义
+
+### Avoid when
+
+- 同一行堆太多彩色 badge，导致主内容失焦
+- 把 badge 当装饰元素使用，而不是信息元素
+- 在已经很密的表格中同时混用 filled badge 和 filled button

@@ -168,3 +168,17 @@ DaisyUI [Menu](https://daisyui.com/components/menu/) 的 Blade 封装。
     </li>
 </ul>
 ```
+
+## 使用建议
+
+### Best used for
+
+- 侧边导航、段落式功能列表、设置分组导航
+- 放在有明确面板边界的容器里，例如 sidebar / card / drawer
+- 使用 `menu.item` 保持结构和 `menu-active` 样式的一致性
+
+### Avoid when
+
+- 在裸页面上直接渲染 menu，缺少上下文会显得过轻
+- 把过多交互、图标、badge 全塞进同一层 menu item
+- 在窄屏里使用水平 menu 却不控制换行或滚动策略

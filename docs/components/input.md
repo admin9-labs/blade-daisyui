@@ -16,6 +16,7 @@ DaisyUI [Text Input](https://daisyui.com/components/input/) 的 Blade 封装。
 | size | string | null | xs, sm, md, lg, xl |
 | ghost | bool | false | — |
 | type | string | "text" | text, password, email, number, date, datetime-local, week, month, tel, url, search, time |
+| validator | bool | false | 为元素添加 `validator` class |
 
 ## 示例
 
@@ -72,9 +73,30 @@ DaisyUI [Text Input](https://daisyui.com/components/input/) 的 Blade 封装。
 <x-dui::input placeholder="You can't touch this" disabled />
 ```
 
+### 验证态
+```blade
+<x-dui::input type="email" :validator="true" required placeholder="mail@site.com" />
+<x-dui::validator.hint>Enter valid email address</x-dui::validator.hint>
+```
+
 ## 渲染结果
 ```html
 <input type="text" class="input" placeholder="Type here" />
 <input type="email" class="input input-primary" placeholder="mail@site.com" />
 <input type="text" class="input input-lg input-ghost" placeholder="Type here" />
+<input type="email" class="input validator" required placeholder="mail@site.com" />
 ```
+
+## 使用建议
+
+### Best used for
+
+- 常规表单输入，优先以 `neutral` 建立稳定基线
+- 需要 calm UI 的设置页、审核页、后台配置区
+- 配合 `fieldset`、`label`、`validator.hint` 形成完整输入栈
+
+### Avoid when
+
+- 在边界不清楚的容器里直接使用 `ghost`
+- 用颜色代替表单层级和说明文字
+- 只放输入框不放 label / hint，迫使用户靠 placeholder 理解字段
