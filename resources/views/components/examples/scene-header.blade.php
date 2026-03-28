@@ -19,6 +19,7 @@
     'themeGroupClass' => 'flex flex-wrap items-center gap-2',
     'themeWrapperClass' => null,
     'themeButtonClass' => 'btn btn-sm btn-ghost rounded-full',
+    'themeLabel' => 'Theme',
     'actionLabel' => null,
     'actionClass' => 'rounded-full border border-base-content/15',
 ])
@@ -44,8 +45,9 @@
 
     <x-dui::navbar.end class="{{ $endClass }}">
         <div class="{{ $themeGroupClass }}">
+            <span class="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-base-content/45">{{ $themeLabel }}</span>
             @if ($themeWrapperClass === 'join')
-                <div class="join">
+                <div class="join" role="radiogroup" aria-label="{{ $themeLabel }}">
                     @foreach ($themes as $theme)
                         <x-dui::theme-controller
                             type="radio"
@@ -58,16 +60,18 @@
                     @endforeach
                 </div>
             @else
-                @foreach ($themes as $theme)
-                    <x-dui::theme-controller
-                        type="radio"
-                        name="{{ $themeName }}"
-                        value="{{ $theme['value'] }}"
-                        aria-label="{{ $theme['label'] }}"
-                        @checked($theme['checked'] ?? false)
-                        class="{{ $themeButtonClass }}"
-                    />
-                @endforeach
+                <div role="radiogroup" aria-label="{{ $themeLabel }}" class="contents">
+                    @foreach ($themes as $theme)
+                        <x-dui::theme-controller
+                            type="radio"
+                            name="{{ $themeName }}"
+                            value="{{ $theme['value'] }}"
+                            aria-label="{{ $theme['label'] }}"
+                            @checked($theme['checked'] ?? false)
+                            class="{{ $themeButtonClass }}"
+                        />
+                    @endforeach
+                </div>
             @endif
 
             @if ($actionLabel)

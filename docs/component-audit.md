@@ -178,6 +178,7 @@ What to watch:
 Recommendation:
 - Use `neutral` as the package default for composed forms when you want restraint.
 - Use `ghost` only when the container already provides a visible boundary.
+- Keep showcase examples semantically complete: form fields should demonstrate real labels, field names, and validator hint associations rather than visual placeholders alone.
 
 ### Toggle / Checkbox / Radio / Range
 
@@ -195,6 +196,7 @@ Recommendation:
 - Pair binary controls with explicit copy and spacing.
 - Avoid making them the most saturated object in a form section unless the control itself is the primary action.
 - Re-check them in `blade-daisyui::examples.settings-lab` whenever you adjust form examples or control sizes.
+- When they appear in examples, make the descriptive copy part of the clickable target so the package demonstrates touch-friendly behavior by default.
 
 ## Data-dense components
 

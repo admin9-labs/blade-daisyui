@@ -71,6 +71,7 @@
             badgeColor="accent"
             badgeVariant="soft"
             themeName="dui-theme-editorial"
+            themeLabel="Preview theme"
             centerClass="hidden md:flex"
             themeWrapperClass="join"
             themeGroupClass="flex flex-wrap items-center gap-2"
@@ -86,7 +87,7 @@
         <x-dui::hero class="landing-hero glow-panel rounded-[2.25rem] border border-base-content/20">
             <x-dui::hero.content class="landing-hero-content relative grid gap-8 px-6 py-10 md:grid-cols-[1.2fr_0.8fr] md:px-10 md:py-14">
                 <div class="space-y-5">
-                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-info-content/80">Edition 03</p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-base-content/70">Edition 03</p>
                     <h1 class="text-3xl font-black leading-tight text-neutral-content sm:text-4xl md:text-5xl">
                         Editorial landing flows built with Blade DaisyUI, ready for narrative-first brands.
                     </h1>
@@ -148,7 +149,7 @@
                     <div class="grid gap-5 md:grid-cols-3">
                         @foreach ($timeline as $step)
                             <div class="space-y-1 rounded-[1.3rem] border border-base-content/10 bg-base-100/5 p-4">
-                                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-info-content/80">{{ $step['label'] }}</p>
+                                <p class="text-xs font-semibold uppercase tracking-[0.35em] text-base-content/70">{{ $step['label'] }}</p>
                                 <p class="text-sm text-neutral-content/80">{{ $step['date'] }}</p>
                                 <p class="text-sm text-neutral-content/60">{{ $step['detail'] }}</p>
                             </div>

@@ -35,10 +35,13 @@ This repo ships low-level Blade wrappers around DaisyUI 5, so the most powerful 
 - Test `input`, `select`, `textarea`, `file-input`, `range`, and `toggle` with `neutral` color and `xl` size settings so they stay consistent where the showcase needs calm controls.
 - Trigger `ghost` variants and `validator` flags to verify states still stack visually (labels, hints, fieldsets) without breaking grid alignment.
 - In `settings-lab`, check that submit actions remain visually dominant after controls stack to one column on small screens.
+- Treat the examples as production-grade references, not decorative mockups: labels, `name`, `id`, and `aria-describedby` links should stay intact when you edit the forms.
+- Binary controls in examples should keep their explanatory copy inside an actual clickable label region so the interaction remains obvious on touch devices.
 
 ### Theme transitions
 - The `theme-controller` switch in the showcases lets you cycle between `corporate`, `business`, and `night`. For each theme inspect backgrounds, shadows, and text contrast to ensure component classes adjust cleanly (e.g., `btn-neutral`, `badge-neutral`, `alert-soft`).
 - Track gradient overlays, noise, and glassy textures across all three showcases to make sure they don't conflict with DaisyUI color utilities.
+- Avoid validating theme quality with hard-coded semantic foreground tokens on unrelated surfaces; prefer base/content relationships unless the scene is intentionally proving a semantic state.
 
 ### Host layout boundary
 - Treat the example views as content partials that inherit the host Laravel app shell. The host should own page background, global typography, and outer layout framing.

@@ -1,8 +1,8 @@
 @php
     $filters = ['Critical', 'Ops', 'Content', 'Billing'];
     $checks = [
-        ['label' => 'Autosave snapshots', 'desc' => 'Capture incomplete edits every 30 seconds.', 'checked' => true],
-        ['label' => 'Weekly digest', 'desc' => 'Summarize configuration drift and unresolved validation warnings.', 'checked' => false],
+        ['key' => 'autosave', 'label' => 'Autosave snapshots', 'desc' => 'Capture incomplete edits every 30 seconds.', 'checked' => true],
+        ['key' => 'digest', 'label' => 'Weekly digest', 'desc' => 'Summarize configuration drift and unresolved validation warnings.', 'checked' => false],
     ];
 @endphp
 
@@ -67,9 +67,9 @@
                         </p>
 
                         <x-dui::filter class="flex-wrap gap-2">
-                            <x-dui::filter.reset name="setting-scope" aria-label="All scopes" />
+                            <x-dui::filter.reset name="setting-scope" value="all" aria-label="All scopes" />
                             @foreach ($filters as $filter)
-                                <x-dui::filter.item name="setting-scope" aria-label="{{ $filter }}" @checked($loop->first) />
+                                <x-dui::filter.item name="setting-scope" value="{{ strtolower($filter) }}" aria-label="{{ $filter }}" @checked($loop->first) />
                             @endforeach
                         </x-dui::filter>
                     </x-dui::card.body>
@@ -85,47 +85,55 @@
                         <form class="grid gap-5">
                             <div class="grid gap-5 lg:grid-cols-2">
                                 <x-dui::fieldset class="gap-2">
-                                    <x-dui::fieldset.legend>Workspace name</x-dui::fieldset.legend>
-                                    <x-dui::input color="neutral" size="xl" value="Northwind Control Cluster" class="w-full rounded-2xl" />
-                                    <x-dui::label class="text-[color:var(--dui-muted)]">Visible to audit collaborators and export recipients.</x-dui::label>
+                                    <x-dui::fieldset.legend>
+                                        <label for="workspace-name">Workspace name</label>
+                                    </x-dui::fieldset.legend>
+                                    <x-dui::input id="workspace-name" name="workspace_name" color="neutral" size="xl" value="Northwind Control Cluster" aria-describedby="workspace-name-hint" class="w-full rounded-2xl" />
+                                    <x-dui::label id="workspace-name-hint" class="text-[color:var(--dui-muted)]">Visible to audit collaborators and export recipients.</x-dui::label>
                                 </x-dui::fieldset>
 
                                 <x-dui::fieldset class="gap-2">
-                                    <x-dui::fieldset.legend>Review owner</x-dui::fieldset.legend>
-                                    <x-dui::select color="neutral" class="w-full rounded-2xl">
+                                    <x-dui::fieldset.legend>
+                                        <label for="review-owner">Review owner</label>
+                                    </x-dui::fieldset.legend>
+                                    <x-dui::select id="review-owner" name="review_owner" color="neutral" aria-describedby="review-owner-hint" class="w-full rounded-2xl">
                                         <option>Mae Chen</option>
                                         <option>Dario Bell</option>
                                         <option>Sana Mori</option>
                                     </x-dui::select>
-                                    <x-dui::label class="text-[color:var(--dui-muted)]">Use a neutral control style unless owner selection is the primary action.</x-dui::label>
+                                    <x-dui::label id="review-owner-hint" class="text-[color:var(--dui-muted)]">Use a neutral control style unless owner selection is the primary action.</x-dui::label>
                                 </x-dui::fieldset>
                             </div>
 
                             <x-dui::fieldset class="gap-2">
-                                <x-dui::fieldset.legend>Reviewer email</x-dui::fieldset.legend>
-                                <x-dui::input type="email" :validator="true" value="ops-review@northwind.dev" required color="neutral" class="w-full rounded-2xl" />
-                                <x-dui::validator.hint>Use a valid mailbox for digest delivery.</x-dui::validator.hint>
+                                <x-dui::fieldset.legend>
+                                    <label for="reviewer-email">Reviewer email</label>
+                                </x-dui::fieldset.legend>
+                                <x-dui::input id="reviewer-email" name="reviewer_email" type="email" :validator="true" value="ops-review@northwind.dev" required aria-describedby="reviewer-email-hint" color="neutral" class="w-full rounded-2xl" />
+                                <x-dui::validator.hint id="reviewer-email-hint">Use a valid mailbox for digest delivery.</x-dui::validator.hint>
                             </x-dui::fieldset>
 
                             <x-dui::fieldset class="gap-2">
-                                <x-dui::fieldset.legend>Audit note</x-dui::fieldset.legend>
-                                <x-dui::textarea color="neutral" :validator="true" required class="min-h-36 rounded-[1.5rem]">Ghost controls only work here because the panel already provides enough boundary. In flatter contexts, neutral surfaces read better.</x-dui::textarea>
-                                <x-dui::validator.hint>Keep the note specific enough that another reviewer can reproduce the judgment.</x-dui::validator.hint>
+                                <x-dui::fieldset.legend>
+                                    <label for="audit-note">Audit note</label>
+                                </x-dui::fieldset.legend>
+                                <x-dui::textarea id="audit-note" name="audit_note" color="neutral" :validator="true" required aria-describedby="audit-note-hint" class="min-h-36 rounded-[1.5rem]">Ghost controls only work here because the panel already provides enough boundary. In flatter contexts, neutral surfaces read better.</x-dui::textarea>
+                                <x-dui::validator.hint id="audit-note-hint">Keep the note specific enough that another reviewer can reproduce the judgment.</x-dui::validator.hint>
                             </x-dui::fieldset>
 
                             <div class="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
                                 <x-dui::fieldset class="gap-3 rounded-[1.5rem] border border-[color:var(--dui-line)] bg-base-100/65 p-4">
                                     <x-dui::fieldset.legend>Alert level</x-dui::fieldset.legend>
                                     <label class="flex items-center gap-3">
-                                        <x-dui::radio color="primary" name="alert-level" checked="checked" />
+                                        <x-dui::radio color="primary" name="alert_level" value="balanced" checked="checked" />
                                         <span>Balanced</span>
                                     </label>
                                     <label class="flex items-center gap-3">
-                                        <x-dui::radio color="warning" name="alert-level" />
+                                        <x-dui::radio color="warning" name="alert_level" value="high-visibility" />
                                         <span>High visibility</span>
                                     </label>
                                     <label class="flex items-center gap-3">
-                                        <x-dui::radio color="error" name="alert-level" />
+                                        <x-dui::radio color="error" name="alert_level" value="escalation-mode" />
                                         <span>Escalation mode</span>
                                     </label>
                                 </x-dui::fieldset>
@@ -134,23 +142,23 @@
                                     <x-dui::fieldset.legend>Automation sensitivity</x-dui::fieldset.legend>
                                     <div class="space-y-3">
                                         <div class="flex items-center justify-between text-sm">
-                                            <span class="font-semibold">Calm</span>
+                                            <label for="automation-sensitivity" class="font-semibold">Calm</label>
                                             <span class="font-semibold text-[color:var(--dui-blue)]">70%</span>
                                         </div>
-                                        <x-dui::range color="primary" size="xl" min="0" max="100" value="70" />
-                                        <p class="text-sm text-[color:var(--dui-muted)]">Range controls should not visually overpower the submit action.</p>
+                                        <x-dui::range id="automation-sensitivity" name="automation_sensitivity" color="primary" size="xl" min="0" max="100" value="70" aria-describedby="automation-sensitivity-hint" />
+                                        <p id="automation-sensitivity-hint" class="text-sm text-[color:var(--dui-muted)]">Range controls should not visually overpower the submit action.</p>
                                     </div>
                                 </x-dui::fieldset>
                             </div>
 
                             <div class="grid gap-4 rounded-[1.75rem] border border-[color:var(--dui-line)] bg-neutral text-neutral-content p-5">
                                 @foreach ($checks as $check)
-                                    <label class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                                    <label for="setting-{{ $check['key'] }}" class="flex cursor-pointer flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                                         <div>
                                             <p class="font-semibold">{{ $check['label'] }}</p>
-                                            <p class="text-sm text-neutral-content/60">{{ $check['desc'] }}</p>
+                                            <p id="setting-{{ $check['key'] }}-hint" class="text-sm text-neutral-content/60">{{ $check['desc'] }}</p>
                                         </div>
-                                        <x-dui::toggle color="neutral" size="xl" @checked($check['checked']) />
+                                        <x-dui::toggle id="setting-{{ $check['key'] }}" name="settings[{{ $check['key'] }}]" value="1" color="neutral" size="xl" aria-describedby="setting-{{ $check['key'] }}-hint" @checked($check['checked']) />
                                     </label>
                                 @endforeach
                             </div>

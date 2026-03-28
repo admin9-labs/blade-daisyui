@@ -16,6 +16,9 @@ class ExampleViewsTest extends TestCase
         $this->assertStringContainsString('class="table', $html);
         $this->assertStringContainsString('class="timeline', $html);
         $this->assertStringContainsString('Navigation density review', $html);
+        $this->assertStringContainsString('id="incident-title"', $html);
+        $this->assertStringContainsString('name="pin_audit_baseline"', $html);
+        $this->assertStringContainsString('role="radiogroup"', $html);
     }
 
     public function test_landing_editorial_showcase_view_renders(): void
@@ -27,6 +30,7 @@ class ExampleViewsTest extends TestCase
         $this->assertStringContainsString('feature-card', $html);
         $this->assertStringContainsString('Request preview', $html);
         $this->assertStringContainsString('Story Pack', $html);
+        $this->assertStringContainsString('Preview theme', $html);
     }
 
     public function test_settings_lab_showcase_view_renders(): void
@@ -38,5 +42,8 @@ class ExampleViewsTest extends TestCase
         $this->assertStringContainsString('Validation calmness', $html);
         $this->assertStringContainsString('Northwind Control Cluster', $html);
         $this->assertStringContainsString('class="fieldset', $html);
+        $this->assertStringContainsString('id="reviewer-email"', $html);
+        $this->assertStringContainsString('aria-describedby="reviewer-email-hint"', $html);
+        $this->assertStringContainsString('name="settings[autosave]"', $html);
     }
 }

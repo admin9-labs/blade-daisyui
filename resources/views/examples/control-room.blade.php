@@ -269,43 +269,44 @@
                             </div>
 
                             <div class="grid gap-4">
-                                <label class="grid gap-2">
-                                    <span class="text-sm font-semibold">Incident title</span>
-                                    <x-dui::input color="neutral" size="xl" value="Navigation density review" class="w-full rounded-2xl"></x-dui::input>
-                                </label>
+                                <div class="grid gap-2">
+                                    <label for="incident-title" class="text-sm font-semibold">Incident title</label>
+                                    <x-dui::input id="incident-title" name="incident_title" color="neutral" size="xl" value="Navigation density review" class="w-full rounded-2xl"></x-dui::input>
+                                </div>
 
                                 <div class="grid gap-4 md:grid-cols-2">
-                                    <label class="grid gap-2">
-                                        <span class="text-sm font-semibold">Priority</span>
-                                        <x-dui::select color="neutral" class="rounded-2xl">
+                                    <div class="grid gap-2">
+                                        <label for="incident-priority" class="text-sm font-semibold">Priority</label>
+                                        <x-dui::select id="incident-priority" name="incident_priority" color="neutral" class="rounded-2xl">
                                             <option>High</option>
                                             <option>Medium</option>
                                             <option>Low</option>
                                         </x-dui::select>
-                                    </label>
+                                    </div>
 
-                                    <label class="grid gap-2">
-                                        <span class="text-sm font-semibold">Ship lane</span>
-                                        <x-dui::select :ghost="true" class="rounded-2xl border border-base-300">
+                                    <div class="grid gap-2">
+                                        <label for="ship-lane" class="text-sm font-semibold">Ship lane</label>
+                                        <x-dui::select id="ship-lane" name="ship_lane" :ghost="true" aria-describedby="ship-lane-hint" class="rounded-2xl border border-base-300">
                                             <option>Control room</option>
                                             <option>Growth</option>
                                             <option>Ops</option>
                                         </x-dui::select>
-                                    </label>
+                                        <p id="ship-lane-hint" class="text-sm text-base-content/55">Ghost controls only work when the surrounding panel already gives the field a visible shell.</p>
+                                    </div>
                                 </div>
 
-                                <label class="grid gap-2">
-                                    <span class="text-sm font-semibold">Reviewer note</span>
-                                    <x-dui::textarea color="neutral" class="min-h-32 rounded-[1.5rem]">Spacing is stable, but action clusters should stay under three buttons on 1024px screens.</x-dui::textarea>
-                                </label>
+                                <div class="grid gap-2">
+                                    <label for="reviewer-note" class="text-sm font-semibold">Reviewer note</label>
+                                    <x-dui::textarea id="reviewer-note" name="reviewer_note" color="neutral" class="min-h-32 rounded-[1.5rem]">Spacing is stable, but action clusters should stay under three buttons on 1024px screens.</x-dui::textarea>
+                                </div>
 
-                                <div class="flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] border border-base-300 bg-base-100/70 px-4 py-3">
+                                <label for="pin-audit-baseline" class="flex cursor-pointer flex-wrap items-center justify-between gap-4 rounded-[1.5rem] border border-base-300 bg-base-100/70 px-4 py-3">
                                     <div>
                                         <p class="font-semibold">Pin this surface as the package audit baseline</p>
-                                        <p class="text-sm text-base-content/55">Useful for manual review after component API changes.</p>
+                                        <p id="pin-audit-baseline-hint" class="text-sm text-base-content/55">Useful for manual review after component API changes.</p>
                                     </div>
-                                    <x-dui::toggle color="neutral" size="xl" checked="checked"></x-dui::toggle>
-                                </div>
+                                    <x-dui::toggle id="pin-audit-baseline" name="pin_audit_baseline" value="1" color="neutral" size="xl" aria-describedby="pin-audit-baseline-hint" checked="checked"></x-dui::toggle>
+                                </label>
                             </div>
                         </x-dui::card.body>
                     </x-dui::card>
